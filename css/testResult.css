@@ -1,0 +1,104 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+ul li{
+    list-style: none;
+}
+body {
+    background: rgb(253, 253, 253);
+}
+
+.main {
+    text-align: center;
+    padding: 66px 15px 10px 15px;
+    color: rgb(102, 102, 102);
+}
+
+.testLogo {
+    display: inline-block;
+    width: 80px;
+    height: 81px;
+    background: url('../img/finish.png') no-repeat;
+}
+
+.text {
+    font-size: 13px;
+}
+
+.text .riskType {
+    font-size: 26px;
+    color: rgb(179, 139, 57);
+}
+
+.remark {
+    font-size: 14px;
+    text-align: left;
+    margin-top: 31px;
+    line-height: 24px;
+}
+
+.btn {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 2px;
+}
+
+.finishBtn {
+    color: #ffffff;
+    background: rgb(180, 140, 48);
+    margin-top: 65px;
+}
+
+.refreshBtn {
+    border: 1px solid rgba(179, 139, 57, .5);
+    margin-top: 20px;
+    margin-bottom: 49px;
+}
+.refreshBtn a {
+    display: block;
+    text-decoration: none;
+    color: rgb(179, 139, 57);
+}
+
+.recommend-title {
+    padding: 12px 15px;
+    color: rgb(51,51,51);
+    font-size: 16px;
+}
+.fund-list {
+    padding-bottom: 20px;
+}
+.fund-list li {
+    padding: 8px 26px 8px 14px;
+    position: relative;
+    text-align: left;
+    min-height: 37px;
+    border-bottom: 0.6px solid rgb(238,238,238);
+}
+.fund-list li:first-child{
+    border-top:0.6px solid rgb(238,238,238);
+}
+.fund-list li .title {
+    font-size: 15px;
+    height: 20px;
+    line-height: 20px;
+    color: rgb(51,51,51);
+}
+.fund-list li .sub-title {
+    font-size: 12px;
+    color: rgb(102,102,102);
+}
+.fund-list li p {
+    line-height: 25px;
+}
+.fund-list li i {
+    display: block;
+    position: absolute;
+    width: 9px;
+    height: 16px;
+    background: url('../img/detail.png') no-repeat;
+    right: 15px;
+    top: 22px;
+}
