@@ -107,11 +107,11 @@ function getQuestionList(){
                 for(var i = 0; i < data.length; i++){
                     if(i == 0){
                         $('.container').append(
-                            "<div class='questionList'><div class='questions'>"+data[i].questioncontent+"</div><ul>"+list(data[i].answers)+"</ul></div>"
+                            "<div class='questionList'><div class='questions'>"+data[i].questioncontent+"</div><ul>"+list(data[i].answers,data[i].questionid)+"</ul></div>"
                         )
                     }else {
                         $('.container').append(
-                            "<div class='questionList' style='display: none'><div class='questions'>"+data[i].questioncontent+"</div><ul>"+list(data[i].answers)+"</ul></div>"
+                            "<div class='questionList' style='display: none'><div class='questions'>"+data[i].questioncontent+"</div><ul>"+list(data[i].answers,data[i].questionid)+"</ul></div>"
                         )
                     }
 
@@ -126,10 +126,10 @@ function getQuestionList(){
         }
     })
 }
-function list(result) {
+function list(result,id) {
     var str = '';
     for(var i = 0; i < result.length; i++){
-        str += "<li class='clearFix'><span class='letter'>"+Letters[i]+"</span><span class='List'>"+result[i].answercontent+"</span><i class='check' data-questionid="+result[i].serialno+"  data-score="+result[i].answerscore+" onclick='checkThis(this)'></i></li>"
+        str += "<li class='clearFix'><span class='letter'>"+Letters[i]+"</span><span class='List'>"+result[i].answercontent+"</span><i class='check' data-quesid="+id+" data-answerid="+result[i].answerid+"  data-questionid="+result[i].serialno+"  data-score="+result[i].answerscore+" onclick='checkThis(this)'></i></li>"
     }
     return str;
 }
@@ -143,10 +143,16 @@ function isMyself(that){
 function getResult() {
     var scoreSum=0;
     var questions = '';
+    var assessmentJsonStr = [];
     $('.check').each(function(){
         if($(this).attr('class').indexOf('active') > -1){
             scoreSum += parseInt($(this).attr('data-score'))
             questions += $(this).attr('data-questionid') + ','
+            assessmentJsonStr.push({
+                questionid:$(this).attr('data-quesid'),
+                answerid:$(this).attr('data-answerid'),
+                answerscore:Number($(this).attr('data-score'))
+            })
         }
     })
     questions = questions.substr(0,questions.length-1)
@@ -156,6 +162,7 @@ function getResult() {
             paperprop:'0',
             papertype:'1',
             score:scoreSum,
+            assessmentJsonStr:assessmentJsonStr,
             clientid:'bd69380f38104088b9ddea622e814569',
             answers:questions
         }
