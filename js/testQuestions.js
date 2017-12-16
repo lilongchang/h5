@@ -3,6 +3,12 @@
  */
 var uriT = 'http://10.0.12.26:5599';
 var uriT2 = 'http://10.0.12.25:35119';
+
+//需要接收参数
+// papertype:'0'//机构=0，个人=1
+// paperid:'888888',//机构试卷编号=888888个人试卷编号=777777
+// clientid:'bd69380f38104088b9ddea622e814569',客户ID
+//paperprop
 function checkThis(that){
     $(that).parent().siblings().find('i').removeClass('active');
     if(!($(that).attr('class').indexOf('active') > -1)){
@@ -189,7 +195,7 @@ function getResult() {
     // 获取风险等级
      function getRisk() {
         var da = {
-            data:'bd69380f38104088b9ddea622e814569'
+            data:'bd69380f38104088b9ddea622e814569'// 客户
         }
          $.ajax({
              url: uriT + '/customer/getCustomerRiskLevel',
@@ -258,9 +264,9 @@ function getRiskRemark(id) {
     })
 }
 // 获取推荐基金列表
-function getRecommendFund(id) {
+function getRecommendFund(code) {
     var da = {
-        riskcode:id,
+        riskcode:code,
         orderByRank:true,
     };
     $.ajax({
