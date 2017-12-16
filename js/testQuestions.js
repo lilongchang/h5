@@ -169,7 +169,7 @@ function getResult() {
             papertype:'1',
             score:scoreSum,
             assessmentJsonStr:assessmentJsonStr,
-            clientid:'bd69380f38104088b9ddea622e814569',
+            clientid:'yu2G0KTMU1J71I2BO13113X03U1PXD557',
             answers:questions
         }
     }
@@ -195,7 +195,7 @@ function getResult() {
     // 获取风险等级
      function getRisk() {
         var da = {
-            data:'bd69380f38104088b9ddea622e814569'// 客户
+            data:'yu2G0KTMU1J71I2BO13113X03U1PXD557'// 客户
         }
          $.ajax({
              url: uriT + '/customer/getCustomerRiskLevel',
