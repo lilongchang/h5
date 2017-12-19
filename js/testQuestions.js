@@ -107,7 +107,7 @@ function getQuestionList(){
                 var data = data.data;
                 var totle = data.length;
                 totalList = totle;
-                $('.totalQuestion').html(totle)
+                $('.totalQuestion').html('/'+totle)
                 $('.step').css('width',(currentTest/totle)*100+'%')
                 $('.container').empty()
                 for(var i = 0; i < data.length; i++){

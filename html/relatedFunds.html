@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" id="html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>相关基金</title>
+    <link rel="stylesheet" href="../css/commen.css">
+    <script src="../js/jquery.js"></script>
+    <style>
+        body{
+            background: rgb(249,249,249);
+        }
+        .list-title{
+            font-size: .15rem;
+            color: #666666;
+            padding: 0.15rem;
+        }
+        ul li {
+            list-style-type: none;
+            background: #ffffff;
+            padding: 0.1rem 0.15rem;
+            margin-bottom:1px;
+        }
+        ul li:after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        .list-left {
+            float: left;
+            width: 35%;
+        }
+        .list-right {
+            float: right;
+            width: 65%;
+        }
+        .list-right h3{
+            font-size: 0.15rem;
+            color: #333333;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .list-left .profit {
+            color: red;
+            font-size: .22rem;
+        }
+        .list-left .remark {
+            font-size: 0.13rem;
+            color: rgb(126,118,120);
+        }
+        .type ,.grade {
+            display: inline-block;
+            color: #b38b39;
+            font-size: 0.12rem;
+            height: 0.17rem;
+            line-height: 0.17rem;
+            vertical-align: middle;
+            margin-top: .05rem;
+            background: #fff0de;
+            padding: 2px 5px;
+            border-radius: 2px;
+        }
+        .grade{
+            padding-top:0;
+            padding-bottom: 0.04rem;
+        }
+        .grade label {
+            margin-right: 2px;
+        }
+        .grade .bg{
+            display: inline-block;
+            width: 15px;
+            margin-left: -2px;
+            height: 15px;
+            background: url('../img/star.png') no-repeat 0 4px;
+            background-size: 75%;
+        }
+
+        .grade .bg-active{
+            display: inline-block;
+            width: 17px;
+            margin-left: -4px;
+            height: 15px;
+            background: url('../img/star2.png') no-repeat 0 4px;
+            background-size: 75%;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <!--<div class="content">-->
+        <!--<div class="cont-title">海通证券-传媒行业周报</div>-->
+    <!--</div>-->
+    <div class="fund-list">
+        <div class="list-title">相关基金</div>
+        <ul>
+            <li>
+                <div class="list-left">
+                    <p class="profit">21.15%</p>
+                    <p class="remark">近三个月收益</p>
+                </div>
+                <div class="list-right">
+                     <h3>广发全球精选股票混合</h3>
+                    <div class="right-bottom">
+                        <div class="type">国际原油</div>
+                        <div class="grade">
+                            <label>评级</label>
+                            <span class="bg"></span>
+                            <span class="bg"></span>
+                            <span class="bg"></span>
+                            <span class="bg"></span>
+                            <span class="bg"></span>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="list-left">
+                    <p class="profit">21.15%</p>
+                    <p class="remark">近三个月收益</p>
+                </div>
+                <div class="list-right">
+                    <h3>广发全球精选股票混合</h3>
+                    <div class="right-bottom">
+                        <div class="type">国际原油</div>
+                        <div class="grade">
+                            <label>评级</label>
+                            <span class="bg"></span>
+                            <span class="bg"></span>
+                            <span class="bg"></span>
+                            <span class="bg-active"></span>
+                            <span class="bg-active"></span>
+
+
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+<script src="../js/commen.js"></script>
+</html>

@@ -8,6 +8,9 @@ body {
 ul li{
     list-style: none;
 }
+.serialNum p {
+    display: inline-block;
+}
 .Progress{
     height: 4px;
     position: relative;
@@ -22,29 +25,30 @@ ul li{
     background: #b38b39;
 }
 .serialNum {
-    padding: 30px 15px 20px 15px;
+    padding: 0.3rem .15rem .2rem .15rem;
 }
 .serialNum .nowOrder {
-    font-size: 44px;
-    height: 24px;
+    font-size: 0.44rem;
+    height: 0.24rem;
     color: rgb(179,139,57);
-    line-height: 24px;
+    line-height: 0.24rem;
     font-family: PingFangSC-Medium;
 }
 .totalQuestion, .division {
     color: rgb(225,208,171);
+    font-size: 0.15rem;
 }
 .questions {
     padding: 0 15px;
     color: rgb(179,139,57) ;
-    font-size: 16px;
-    margin-bottom:36px;
+    font-size: .15rem;
+    margin-bottom:0.36rem;
 }
 .questionList ul {
-    padding-bottom: 60px;
+    padding-bottom: 0.6rem;
 }
 .questionList ul li {
-    padding: 15px 35px 10px 15px;
+    padding: 0.15rem .35rem 0.1rem 0.15rem;
     position: relative;
     text-align: left;
     min-height: 30px;
@@ -59,8 +63,9 @@ ul li{
 }
 .questionList ul li span {
     display: inline-block;
-    line-height: 23px;
+    line-height: 0.23rem;
     float: left;
+    font-size: 0.15rem;
 }
 .questionList ul li .letter{
     width: 4%;
@@ -70,7 +75,7 @@ ul li{
 }
 .questionList ul li .check{
     position: absolute;
-    right: 15px;
+    right: 0.15rem;
     top: 16px;
     display: block;
     width: 20px;
@@ -86,21 +91,20 @@ ul li{
 }
 .preQuestion {
     text-align: center;
-    /*position: fixed;*/
     background:rgb(253,253,253);
-    /*bottom: 0;*/
-    height: 60px;
+    height: 0.6rem;
     width: 100%;
-    line-height: 25px;
+    line-height: 0.25rem;
 }
 .preQuestion span{
     display: inline-block;
-    margin-bottom: 25px;
+    margin-bottom: 0.25rem;
+    font-size: 0.14rem;
     color: rgb(179,139,57) ;
 }
 .submit {
     /*padding:0 15px 30px 15px;*/
-    padding-bottom: 30px;
+    padding-bottom: .3rem;
     /*position: fixed;*/
     background: rgb(253,253,253);
     width: 92%;
@@ -108,14 +112,14 @@ ul li{
     /*bottom: 0;*/
 }
 .submit p {
-    font-size: 12px;
-    margin-left: 20px;
+    font-size: .12rem;
+    margin-left: .2rem;
     color:rgb(102,102,102)
 }
 .submit .sure{
     width: 100%;
-    height: 50px;
-    line-height: 50px;
+    height: 0.5rem;
+    line-height: 0.5rem;
     border-radius: 2px;
     background: rgb(180, 140, 48);
 }
@@ -136,6 +140,6 @@ ul li{
     background: url('../img/sure_logo1.png') no-repeat;
 }
 .submit .yes{
-    padding-bottom: 10px;
+    padding-bottom: 0.1rem;
     background: rgb(253,253,253);
 }
