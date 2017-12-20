@@ -176,8 +176,8 @@
            </section>
     </div>
     <div class="fund-list">
-        <!--<div class="list-title">相关基金</div>-->
-        <!--<ul class="fund-container">-->
+        <div class="list-title">相关基金</div>
+        <ul class="fund-container">
             <!--<li>-->
                 <!--<div class="list-left">-->
                     <!--<p class="profit">21.15%</p>-->
@@ -199,7 +199,7 @@
                 <!--</div>-->
             <!--</li>-->
 
-        <!--</ul>-->
+        </ul>
     </div>
 </div>
 </body>
@@ -354,7 +354,7 @@
 
 
     //获取资讯I内容
-    getInformation()
+//    getInformation()
     function getInformation(){
         var da = {
             data:'60667'
@@ -374,6 +374,8 @@
                     $('.cont-title').html(content.title);
                     $('.date').html(transTime(content.createTime));
                     $('.subtitle').html(content.sourceName);
+                    var contentHtml = content.clearContent;
+                    $('section').html(contentHtml.replace(/\n/g,''));
                     //代销基金
 //                    if(result.sellFunds != null || result.sellFunds != ''){
 //                        var sellList = result.sellFunds;
