@@ -73,18 +73,36 @@ ul li{
 .questionList ul li:first-child{
     border-top:1px solid rgb(238,238,238);
 }
-.questionList ul li .check{
-    position: absolute;
-    right: 0.15rem;
-    top: 16px;
-    display: block;
-    width: 20px;
-    height: 21px;
-    background: url('../img/noCheck.png') no-repeat;
+
+@media screen and (max-width:700px) {
+    .questionList ul li .check{
+        position: absolute;
+        right: 0.15rem;
+        top: 16px;
+        display: block;
+        width: 20px;
+        height: 21px;
+        background: url('../img/noCheck.png') no-repeat;
+    }
+    .questionList ul li .active{
+        background: url('../img/checked.png') no-repeat;
+    }
 }
-.questionList ul li .active{
-    background: url('../img/checked.png') no-repeat;
+@media screen and (min-width:700px) {
+    .questionList ul li .check{
+        position: absolute;
+        right: 0.15rem;
+        top: 30px;
+        display: block;
+        width: 40px;
+        height: 42px;
+        background: url('../img/noxuan2.png') no-repeat;
+    }
+    .questionList ul li .active{
+        background: url('../img/xuan2.png') no-repeat;
+    }
 }
+
 .questionList ul li .List {
     margin-left: 5px;
     width: 90%;
@@ -127,18 +145,34 @@ ul li{
     color: #ffffff;
     text-decoration: none;
     display: block;
+    font-size: 0.15rem;
     text-align: center;
 }
-.submit .surebtn {
-    float: left;
-    margin-top: 2px;
-    width: 14px;
-    height: 15px;
-    background: url('../img/sure_logo.png') no-repeat;
+@media screen and (max-width:700px) {
+    .submit .surebtn {
+        float: left;
+        margin-top: 2px;
+        width: 14px;
+        height: 15px;
+        background: url('../img/sure_logo.png') no-repeat;
+    }
+    .submit .activeit{
+        background: url('../img/sure_logo1.png') no-repeat;
+    }
 }
-.submit .activeit{
-    background: url('../img/sure_logo1.png') no-repeat;
+@media screen and (min-width:700px) {
+    .submit .surebtn {
+        float: left;
+        margin-top: 13px;
+        width: 28px;
+        height: 28px;
+        background: url('../img/isMy2.png') no-repeat;
+    }
+    .submit .activeit{
+        background: url('../img/isMy2 (2).png') no-repeat;
+    }
 }
+
 .submit .yes{
     padding-bottom: 0.1rem;
     background: rgb(253,253,253);

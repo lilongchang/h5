@@ -100,14 +100,12 @@ function getQuestionList(){
         dataType:'json',
         contentType: "application/json",
         data: JSON.stringify(da),
-
-        crossDomain:true,
         success: function(data) {
             if(data.code=='0'){
                 var data = data.data;
                 var totle = data.length;
                 totalList = totle;
-                $('.totalQuestion').html('/'+totle)
+                $('.totalQuestion').html(totle)
                 $('.step').css('width',(currentTest/totle)*100+'%')
                 $('.container').empty()
                 for(var i = 0; i < data.length; i++){
