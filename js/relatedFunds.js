@@ -1,3 +1,5 @@
+//参数  id
+var uriT = 'http://10.0.12.25:9002/api/v1';
 // 更多
 function loadMore(that){
     $(that).hide().siblings('li').show()
@@ -43,7 +45,7 @@ function getInformation(){
         data:'60667'
     }
     $.ajax({
-        url: 'http://10.0.12.25:9002/api/v1/app/api/relatedFund/getPageDetail',
+        url: uriT + '/app/api/relatedFund/getPageDetail',
         method: 'POST',
         dataType:'json',
         contentType:'application/json;charset=UTF-8',
