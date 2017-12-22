@@ -96,9 +96,9 @@ function getQuestionList(){
     }
     $.ajax({
         url: uriT + '/customer/riskLevel/getQuestionList',
-        method: 'POST',
-        dataType:'json',
-        contentType: "application/json",
+        type : "POST",
+        dataType : "json",
+        contentType: 'application/json;charset=UTF-8',
         data: JSON.stringify(da),
         success: function(data) {
             if(data.code=='0'){
@@ -173,9 +173,9 @@ function getResult() {
     }
     $.ajax({
         url: uriT + '/customer/riskLevel/riskAssessment',
-        method: 'POST',
-        dataType:'json',
-        contentType: "application/json",
+        type : "POST",
+        dataType : "json",
+        contentType: 'application/json;charset=UTF-8',
         data: JSON.stringify(da),
         crossDomain:true,
         success: function(data) {
@@ -197,11 +197,10 @@ function getResult() {
         }
          $.ajax({
              url: uriT + '/customer/getCustomerRiskLevel',
-             method: 'POST',
-             dataType:'json',
-             contentType: "application/json",
+             type : "POST",
+             dataType : "json",
+             contentType: 'application/json;charset=UTF-8',
              data: JSON.stringify(da),
-             crossDomain:true,
              success: function(data) {
                  if(data.code=='0'){
                      var riskClass = data.data.clientrisklevel;
@@ -243,9 +242,9 @@ function getRiskRemark(id) {
     };
     $.ajax({
         url: uriT2 + '/background/riskAppraisal/get',
-        method: 'POST',
-        dataType:'json',
-        contentType: "application/json",
+        type : "POST",
+        dataType : "json",
+        contentType: 'application/json;charset=UTF-8',
         data: JSON.stringify(da),
         crossDomain:true,
         success: function(data) {
@@ -269,9 +268,9 @@ function getRecommendFund(code) {
     };
     $.ajax({
         url: uriT2 + '/background/productPromotion/get',
-        method: 'POST',
-        dataType:'json',
-        contentType: "application/json",
+        type : "POST",
+        dataType : "json",
+        contentType: 'application/json;charset=UTF-8',
         data: JSON.stringify(da),
         crossDomain:true,
         success: function(data) {

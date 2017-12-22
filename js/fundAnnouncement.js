@@ -8,9 +8,9 @@ function getContent(){
     }
     $.ajax({
         url: 'http://10.0.12.26:5599/app/api/getAnnouncementById',
-        method: 'POST',
-        dataType:'json',
-        contentType: "application/json",
+        type : "POST",
+        dataType : "json",
+        contentType: 'application/json;charset=UTF-8',
         data: JSON.stringify(da),
         crossDomain:true,
         success: function(data) {
