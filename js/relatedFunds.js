@@ -52,7 +52,6 @@ function getInformation(){
         data: JSON.stringify(da),
         success: function(data) {
             if(data.code=='0'){
-                console.log(data)
                 var result = data.data;
                 var content = result.fundPage;
                 $('.cont-title').html(content.title);

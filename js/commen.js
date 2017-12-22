@@ -12,7 +12,7 @@ window.onload = function () {
 };
 
 
-//(function() {
+// (function() {
 //    var baseFontSize = 100;
 //    var baseWidth = 375;
 //    var clientWidth = document.documentElement.clientWidth || window.innerWidth;
@@ -26,4 +26,4 @@ window.onload = function () {
 //    }
 //
 //    document.querySelector('html').style.fontSize = rem + 'px';
-//}());
+// }());
