@@ -69,20 +69,18 @@ ul li:after{
 @media screen and (max-width:700px) {
     .grade .bg{
         display: inline-block;
-        width: 15px;
+        width: 10px;
         margin-left: -2px;
-        height: 15px;
-        background: url('../img/star.png') no-repeat 0 4px;
-        background-size: 75%;
+        height: 10px;
+        background: url('../img/starfill1.png') no-repeat;
     }
 
     .grade .bg-active{
         display: inline-block;
-        width: 17px;
-        margin-left: -4px;
-        height: 15px;
-        background: url('../img/star2.png') no-repeat 0 4px;
-        background-size: 75%;
+        width: 11px;
+        margin-left: -2px;
+        height: 10px;
+        background: url('../img/star11.png') no-repeat;
     }
 }
 @media screen and (min-width:700px)and (max-width: 1000px){
@@ -92,37 +90,31 @@ ul li:after{
         width: 20px;
         margin-left: -2px;
         height: 20px;
-        background: url('../img/star3.png') no-repeat 0 4px;
-        background-size: 75%;
+        background: url('../img/starfill2.png') no-repeat ;
     }
 
     .grade .bg-active{
         display: inline-block;
         width: 22px;
-        margin-left: -4px;
+        margin-left: -2px;
         height: 20px;
-        background: url('../img/star3-1.png') no-repeat 0 4px;
-        background-size: 75%;
+        background: url('../img/star22.png') no-repeat;
     }
 }
 @media screen and (min-width:1000px) {
-
     .grade .bg{
         display: inline-block;
         width: 30px;
         margin-left: -2px;
         height: 30px;
-        background: url('../img/star4.png') no-repeat 0 4px;
-        background-size: 75%;
+        background: url('../img/starfill3.png') no-repeat;
     }
-
     .grade .bg-active{
         display: inline-block;
         width: 33px;
-        margin-left: -4px;
+        margin-left: -2px;
         height: 30px;
-        background: url('../img/star4-1.png') no-repeat 0 4px;
-        background-size: 75%;
+        background: url('../img/star33.png') no-repeat;
     }
 }
 .cont-title{
