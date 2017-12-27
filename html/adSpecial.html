@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
-    <title>结果</title>
+    <title>专题</title>
     <link rel="stylesheet" href="../css/commen.css">
+    <script src="../js/zepto.min.js"></script>
     <style>
         body{
             background: rgb(238,238,238);
@@ -35,7 +36,6 @@
        .main-recommend{
            font-size: 0.13rem;
            line-height: 0.22rem;
-           padding: 0.05rem 0.11rem 0.11rem;
            background: rgb(255,255,255);
            /*background: rgba(153,153,153,0.1);*/
            width: 90%;
@@ -75,7 +75,7 @@
             color: rgb(178, 138, 55);
             background: rgb(255, 246, 229);
             border-radius: 2px;
-            padding: 2px 4px;
+            /*padding: 2px 4px;*/
             margin-right: 0.1rem;
         }
 
@@ -152,6 +152,7 @@
             width: 1.70rem;
             height: 0.36rem;
             color: #fff;
+            font-size: 0.15rem;
             text-align: center;
             line-height: 0.36rem;
             display: block;
@@ -165,7 +166,7 @@
             list-style-type: none;
             background: #ffffff;
             border-top: 1px solid rgb(238,238,238);
-            padding: 0.1rem 0.15rem;
+            padding: 0.09rem 0.15rem;
             margin-bottom:1px;
         }
         ul li:after{
@@ -175,11 +176,11 @@
         }
         .list-left {
             float: left;
-            width: 27%;
+            width: 33%;
         }
         .list-right {
             float: right;
-            width: 64%;
+            width: 60%;
         }
         .list-right h3{
             font-size: 0.15rem;
@@ -196,7 +197,7 @@
             font-size: 0.13rem;
             color: rgb(126,118,120);
         }
-        .type , .grade {
+        .right-bottom>div {
             float: left;
             color: #b38b39;
             font-size: 0.12rem;
@@ -206,9 +207,10 @@
             margin-top: .05rem;
             background: #fff0de;
             padding: 2px 5px;
+            margin-right: 2px;
             border-radius: 2px;
         }
-        .grade{
+        .grade,.feilv{
             margin-left:0.02rem;
         }
 
@@ -226,7 +228,7 @@
             .grade .bg{
                 display: inline-block;
                 width: 11px;
-                margin-left: -2px;
+                margin-left: 1px;
                 height: 10px;
                 background: url('../img/adfill1.png') no-repeat 0 0;
             }
@@ -234,7 +236,7 @@
             .grade .bg-active{
                 display: inline-block;
                 width: 11px;
-                margin-left: -2px;
+                margin-left: 1px;
                 height: 10px;
                 background: url('../img/ad1.png') no-repeat 0 1px;
             }
@@ -244,7 +246,7 @@
             .grade .bg{
                 display: inline-block;
                 width: 22px;
-                margin-left: -2px;
+                margin-left: 1px;
                 height: 20px;
                 background: url('../img/adfill2.png') no-repeat 0 0;
             }
@@ -252,7 +254,7 @@
             .grade .bg-active{
                 display: inline-block;
                 width: 22px;
-                margin-left: -2px;
+                margin-left: 1px;
                 height: 20px;
                 background: url('../img/ad2.png') no-repeat 0 1px;
             }
@@ -262,7 +264,7 @@
             .grade .bg{
                 display: inline-block;
                 width: 33px;
-                margin-left: -2px;
+                margin-left: 1px;
                 height: 30px;
                 background: url('../img/adfill3.png') no-repeat 0 0;
             }
@@ -270,7 +272,7 @@
             .grade .bg-active{
                 display: inline-block;
                 width: 33px;
-                margin-left: -2px;
+                margin-left: 1px;
                 height: 30px;
                 background: url('../img/ad3.png') no-repeat 0 1px;
             }
@@ -315,8 +317,8 @@
         }
         .lines {
             float: left;
-            width: 9%;
             text-align: left;
+            width: 7%;
         }
 
         @media screen and (max-width:700px) {
@@ -343,119 +345,80 @@
                 background: url('../img/line3.png') no-repeat;
             }
         }
+        .imgList{
+            font-size: 0;
+            margin-bottom:0.1rem;
+        }
+        .imgList img{
+            width: 100%;
+        }
+        .imgContainer {
+            padding-top: 0.1rem;
+            background:rgb(238,238,238);
+        }
     </style>
 </head>
 <body>
 <header>
-    <img src="../img/headphoto.png" class="title-img" alt="">
-    <p class="title">雾霾下的投资机会</p>
-    <p class="subtitle">环保督察趋严</p>
+    <img src="" class="title-img" alt="">
+    <!--<p class="title">雾霾下的投资机会</p>-->
+    <!--<p class="subtitle">环保督察趋严</p>-->
 </header>
-<div class="main-recommend">
-    百万广告费砸出去了，人们不一定记得您的logo长啥样，但提起品牌的标志性色彩，普通消费者也能简单道出个一二吧！爱马仕橙、蒂芙尼蓝、路易斯威登棕、香奈儿黑白、卡地亚红、范思哲金……还有哪个都市丽人不懂这点“察言观色” ？不过，除了对品牌色的直观印象您还知道——可口可乐钟爱红色诱惑，是因为红色的运输糖浆桶更具视觉冲击力，便于与其它酒精饮料相区分。
-</div>
+<div class="main-recommend"></div>
 <section>
-    <p class="fund-title">嘉实环保低碳混合C 061190</p>
+    <p class="fund-title"></p>
     <div class="mark-list">
-        <p class="risk">中高风险</p>
-        <p class="fund-type">环境保护</p>
-        <p>评级
-            <span class="grades">
-            <span class="bg"></span>
-            <span class="bg"></span>
-            <span class="bg"></span>
-            <span class="bg"></span>
-            <span class="bg-active"></span>
-        </span>
-
+        <p class="risk"></p>
+        <p class="fund-type"></p>
+        <p>
+            <span class="grades"></span>
         </p>
-        <p class="rate">0费率</p>
+        <p class="rate"></p>
+        <p class="types"></p>
     </div>
-    <p class="rates">+47.05%</p>
-    <p class="tishi">今年来的收益</p>
-    <button>10元起投</button>
+    <p class="rates"></p>
+    <p class="tishi"></p>
+    <button class="idBtn"></button>
     <div class="fund-list">
         <ul class="fund-container">
-            <li>
-                <div class="list-left">
-                    <p class="profit">21.15%</p>
-                    <p class="remark">今年来的收益</p>
-                </div>
-                <div class="lines">
-                    <i class="line"></i>
-                </div>
-                <div class="list-right">
-                    <h3>广发全球精选股票混合</h3>
-                    <div class="right-bottom">
-                        <div class="type">国际原油</div>
-                        <div class="grade">
-                            <label>评级</label>
-                            <span class="bg"></span>
-                            <span class="bg"></span>
-                            <span class="bg"></span>
-                            <span class="bg-active"></span>
-                            <span class="bg-active"></span>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="list-left">
-                    <p class="profit">21.15%</p>
-                    <p class="remark">今年来的收益</p>
-                </div>
-                <div class="lines">
-                    <i class="line"></i>
-                </div>
-                <div class="list-right">
-                    <h3>广发全球精选股票混合</h3>
-                    <div class="right-bottom">
-                        <div class="type">国际原油</div>
-                        <div class="grade">
-                            <label>评级</label>
-                            <span class="bg"></span>
-                            <span class="bg"></span>
-                            <span class="bg"></span>
-                            <span class="bg-active"></span>
-                            <span class="bg-active"></span>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="list-left">
-                    <p class="profit">21.15%</p>
-                    <p class="remark">今年来的收益</p>
-                </div>
-                <div class="lines">
-                    <i class="line"></i>
-                </div>
-                <div class="list-right">
-                    <h3>广发全球精选股票混合</h3>
-                    <div class="right-bottom">
-                        <div class="type">国际原油</div>
-                        <div class="grade">
-                            <label>评级</label>
-                            <span class="bg"></span>
-                            <span class="bg"></span>
-                            <span class="bg"></span>
-                            <span class="bg-active"></span>
-                            <span class="bg-active"></span>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li class="li-more">
-                <div>查看更多环保主题基金<i></i></div>
+            <!--<li>-->
+                <!--<div class="list-left">-->
+                    <!--<p class="profit">21.15%</p>-->
+                    <!--<p class="remark">今年来的收益</p>-->
+                <!--</div>-->
+                <!--<div class="lines">-->
+                    <!--<i class="line"></i>-->
+                <!--</div>-->
+                <!--<div class="list-right">-->
+                    <!--<h3>广发全球精选股票混合</h3>-->
+                    <!--<div class="right-bottom">-->
+                        <!--<div class="type">国际原油</div>-->
+                        <!--<div class="grade">-->
+                            <!--<label>评级</label>-->
+                            <!--<span class="bg"></span>-->
+                            <!--<span class="bg"></span>-->
+                            <!--<span class="bg"></span>-->
+                            <!--<span class="bg-active"></span>-->
+                            <!--<span class="bg-active"></span>-->
+                        <!--</div>-->
+                        <!--<div class="feilv">-->
+                            <!--费率1折-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
 
-            </li>
+            <!--</li>-->
+            <!--<li class="li-more">-->
+                <!--<div>查看更多环保主题基金<i></i></div>-->
+            <!--</li>-->
         </ul>
     </div>
+    <div class="imgContainer">
+    </div>
+
 </section>
 
 </body>
-<script>
-
-</script>
+<script src="../js/adSpecial.js"></script>
 <script src="../js/commen.js"></script>
 </html>
