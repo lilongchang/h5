@@ -175,11 +175,11 @@
         }
         .list-left {
             float: left;
-            width: 35%;
+            width: 27%;
         }
         .list-right {
             float: right;
-            width: 65%;
+            width: 64%;
         }
         .list-right h3{
             font-size: 0.15rem;
@@ -275,6 +275,74 @@
                 background: url('../img/ad3.png') no-repeat 0 1px;
             }
         }
+        ul .li-more {
+           font-size: 0.14rem;
+            color: rgb(183,141,55);
+            text-align: center;
+        }
+
+        @media screen and (max-width:700px) {
+            ul .li-more i {
+                display: inline-block;
+                width: 6px;
+                vertical-align: middle;
+                margin-left: 4px;
+                height: 11px;
+                background: url('../img/more1.png') no-repeat;
+            }
+        }
+        @media screen and (min-width:700px)and (max-width: 1000px){
+
+            ul .li-more i {
+                display: inline-block;
+                width: 12px;
+                vertical-align: middle;
+                margin-left: 4px;
+                height: 22px;
+                background: url('../img/more2.png') no-repeat;
+            }
+        }
+        @media screen and (min-width:1000px) {
+
+            ul .li-more i {
+                display: inline-block;
+                width: 18px;
+                vertical-align: middle;
+                margin-left: 4px;
+                height: 33px;
+                background: url('../img/more3.png') no-repeat;
+            }
+        }
+        .lines {
+            float: left;
+            width: 9%;
+            text-align: left;
+        }
+
+        @media screen and (max-width:700px) {
+            .line {
+                display: inline-block;
+                width: 1px;
+                height: 49px;
+                background: url('../img/line1.png') no-repeat;
+            }
+        }
+        @media screen and (min-width:700px)and (max-width: 1000px){
+            .line {
+                display: inline-block;
+                width: 2px;
+                height: 98px;
+                background: url('../img/line2.png') no-repeat;
+            }
+        }
+        @media screen and (min-width:1000px) {
+            .line {
+                display: inline-block;
+                width: 3px;
+                height: 147px;
+                background: url('../img/line3.png') no-repeat;
+            }
+        }
     </style>
 </head>
 <body>
@@ -313,25 +381,8 @@
                     <p class="profit">21.15%</p>
                     <p class="remark">今年来的收益</p>
                 </div>
-                <div class="list-right">
-                    <h3>广发全球精选股票混合</h3>
-                    <div class="right-bottom">
-                        <div class="type">国际原油</div>
-                        <div class="grade">
-                            <label>评级</label>
-                            <span class="bg"></span>
-                            <span class="bg"></span>
-                            <span class="bg"></span>
-                            <span class="bg-active"></span>
-                            <span class="bg-active"></span>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="list-left">
-                    <p class="profit">21.15%</p>
-                    <p class="remark">今年来的收益</p>
+                <div class="lines">
+                    <i class="line"></i>
                 </div>
                 <div class="list-right">
                     <h3>广发全球精选股票混合</h3>
@@ -353,6 +404,9 @@
                     <p class="profit">21.15%</p>
                     <p class="remark">今年来的收益</p>
                 </div>
+                <div class="lines">
+                    <i class="line"></i>
+                </div>
                 <div class="list-right">
                     <h3>广发全球精选股票混合</h3>
                     <div class="right-bottom">
@@ -368,12 +422,40 @@
                     </div>
                 </div>
             </li>
+            <li>
+                <div class="list-left">
+                    <p class="profit">21.15%</p>
+                    <p class="remark">今年来的收益</p>
+                </div>
+                <div class="lines">
+                    <i class="line"></i>
+                </div>
+                <div class="list-right">
+                    <h3>广发全球精选股票混合</h3>
+                    <div class="right-bottom">
+                        <div class="type">国际原油</div>
+                        <div class="grade">
+                            <label>评级</label>
+                            <span class="bg"></span>
+                            <span class="bg"></span>
+                            <span class="bg"></span>
+                            <span class="bg-active"></span>
+                            <span class="bg-active"></span>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="li-more">
+                <div>查看更多环保主题基金<i></i></div>
 
+            </li>
         </ul>
     </div>
 </section>
 
 </body>
-<!--<script src="../js/testQuestions.js"></script>-->
+<script>
+
+</script>
 <script src="../js/commen.js"></script>
 </html>
