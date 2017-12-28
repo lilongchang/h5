@@ -10,7 +10,7 @@ window.onload = function () {
         html.style.fontSize=width/375*100+'px';
     }
 };
-
+var uriT = 'http://10.0.12.25:9002/api/v1';
 
 // (function() {
 //    var baseFontSize = 100;

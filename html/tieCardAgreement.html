@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
@@ -10,20 +10,21 @@
             padding: 0;
         }
         p{
-            font-size: 15px;
-            line-height: 23px;
+            font-size: 0.15rem;
+            line-height: 0.23rem;
         }
         header {
             text-align: center;
-            font-size: 16px;
-            margin-top: 20px;
+            font-size: 0.16rem;
+            margin-top: 0.2rem;
             font-weight: 700;
         }
         section{
-            padding: 10px 15px;
+            padding: 0.1rem 0.15rem;
         }
         .subtitle {
             font-weight: 700;
+            font-size: 0.15rem;
         }
     </style>
 </head>
@@ -33,22 +34,17 @@
     <section>
         <div class="subtitle">致上海有鱼基金销售有限公司：</div>
         <p>本人（授权人）现就本人所开立的银行账户：</p>
-        <br/>
         <p>账户姓名：<span class="cardName">张三</span></p>
         <p>账户账号：<span class="cardNum">2345</span></p>
         <p>账户开户银行名称：<span class="cardBankName">招商银行</span></p>
         <p>账户开户证件：<span class="cardCertificates">身份证</span></p>
         <p>账户开户证件号码：<span class="cardCertificatesNum">411425166523524512</span></p>
-        <br/>
-        <p style="text-indent: 25px">授权贵公司（被授权人）通过贵公司指定的第三方支付机构及商业银行按照本人在贵公司基金交易平台上的交易申请金额，自上述账户进行基金交易资金的代收。代收资金用途：基金认购、基金申购、基金定期定额等。</p>
-        <br/>
+        <p style="text-indent: 0.25rem">授权贵公司（被授权人）通过贵公司指定的第三方支付机构及商业银行按照本人在贵公司基金交易平台上的交易申请金额，自上述账户进行基金交易资金的代收。代收资金用途：基金认购、基金申购、基金定期定额等。</p>
         <p class="subtitle">本人在此声明已清楚知悉本次授权代收的性质和后果。贵公司根据本授权书所采取的全部行动和措施的法律后果均由本人承担。</p>
-        <br/>
-        <p style="text-indent: 25px">本人知晓并同意，受本人银行账户状态、银行、第三方支付机构及网络等原因所限, 本授权书项下交易申请可能会通过多次代扣交易方可完成，且贵公司无需对资金到账时间做任何承诺。贵公司或贵公司委托的第三方支付机构或银行仅根据本授权书所述的授权进行相关操作。<span style="font-weight: 700">贵公司或贵公司委托的第三方支付机构或银行无义务对根据本授权书所采取的全部行动和措施的时效性和结果承担任何责任。</span></p>
-        <br/>
+        <p style="text-indent: 0.25rem">本人知晓并同意，受本人银行账户状态、银行、第三方支付机构及网络等原因所限, 本授权书项下交易申请可能会通过多次代扣交易方可完成，且贵公司无需对资金到账时间做任何承诺。贵公司或贵公司委托的第三方支付机构或银行仅根据本授权书所述的授权进行相关操作。<span style="font-weight: 700">贵公司或贵公司委托的第三方支付机构或银行无义务对根据本授权书所采取的全部行动和措施的时效性和结果承担任何责任。</span></p>
         <p>未经本人签署《银行自动转账授权终止通知书》之前，本授权持续有效。</p>
-        <div style="float: right;padding: 20px 15px;">
-            <span>立授权人：<span class="AuthorizingName">张三</span></span>
+        <div style="float: right;padding: 0.2rem 0.15rem;">
+            <span style="font-size: 0.15rem">立授权人：<span class="AuthorizingName">张三</span></span>
             <p class="nowTime"></p>
         </div>
     </section>
@@ -72,5 +68,6 @@
     var nowTime = document.getElementsByClassName('nowTime')[0];
     nowTime.innerHTML = getTime()
 </script>
+<script src="../js/commen.js"></script>
 </body>
 </html>

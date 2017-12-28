@@ -1,5 +1,5 @@
 //参数  id
-var uriT = 'http://10.0.12.25:9002/api/v1';
+
 
 // 更多
 function loadMore(that) {
@@ -51,8 +51,8 @@ function getInformation() {
     }
     $.ajax({
         url: uriT + '/app/api/relatedFund/getPageDetail',
-        type : "POST",
-        dataType : "json",
+        type: "POST",
+        dataType: "json",
         contentType: 'application/json;charset=UTF-8',
         data: JSON.stringify(da),
         success: function (data) {
@@ -96,7 +96,16 @@ function getInformation() {
                                 "</div>" +
                                 "</li>"
                             )
-                        } else if (i == 2) {
+                        } else if (sellList.length === 3) {
+                            $('.fund-container').append(
+                                "<li>" +
+                                "<div class='list-left'><p class='profit'>" + yield + "</p><p class='remark'>近三个月收益</p></div>" +
+                                "<div class='list-right'><h3>" + sellList[i].fundShort + "</h3><div class='right-bottom'><div class='type'>" + sellList[i].label + "</div>" +
+                                "<div class='grade'><label>评级</label> " + starList(sellList[i].milkyWayRating) + "</div>" +
+                                "</div>" +
+                                "</li>"
+                            )
+                        } else if (i === 2 && sellList.length > 3) {
                             $('.fund-container').append(
                                 "<li>" +
                                 "<div class='list-left'><p class='profit'>" + yield + "</p><p class='remark'>近三个月收益</p></div>" +
@@ -157,7 +166,7 @@ $(document).ready(function () {
         var list = e.target || e.srcElement;
         if (list.nodeName.toLowerCase() === 'img') {
             for (var i = 0; i < isImgBig.length; i++) {
-                if(list.getAttribute('src') === isImgBig[i]){
+                if (list.getAttribute('src') === isImgBig[i]) {
                     // youyufund.openGallery(i);
                     break
                 }

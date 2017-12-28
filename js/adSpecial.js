@@ -1,10 +1,4 @@
 //参数  id
-var uriT = 'http://10.0.12.25:9002/api/v1';
-
-// 更多
-function loadMore(that) {
-    $(that).hide().siblings('li').show()
-}
 
 // 银河评级
 function starList(data) {
@@ -25,7 +19,7 @@ function starList(data) {
 }
 // 收益类型
 //查询字典(html)
-getDictHtml()
+// getDictHtml()
 function getDictHtml(element) {
     var da={
         dictId:'100015'
@@ -58,11 +52,50 @@ function getDictHtml(element) {
         }
     })
 }
+// 收益率数据
+var json=[{
+    dictvalue:'1D',
+    dictcomment:'日'
+},{
+    dictvalue:'1M',
+    dictcomment:'近1月'
+},{
+    dictvalue:'1W',
+    dictcomment:'近1周'
+},{
+    dictvalue:'1Y',
+    dictcomment:'近1年'
+},{
+    dictvalue:'2Y',
+    dictcomment:'近2年'
+},{
+    dictvalue:'3M',
+    dictcomment:'近3月'
+},{
+    dictvalue:'6M',
+    dictcomment:'近6月'
+},{
+    dictvalue:'7D',
+    dictcomment:'7日年化'
+},{
+    dictvalue:'SF',
+    dictcomment:'成立以来'
+},{
+    dictvalue:'SF',
+    dictcomment:'成立以来'
+},{
+    dictvalue:'SY',
+    dictcomment:'今年以来'
+},{
+    dictvalue:'TS',
+    dictcomment:'万份收益'
+}]
+
 getInformation()
 function getInformation() {
     var da = {
         data: {
-            specialtopicid: '922a0cb7e7b94f9c98a4d3b043daf481'
+            specialtopicid: 'aa152826f7b940708fadd45c461dbde5'
         }
 
     }
@@ -75,28 +108,41 @@ function getInformation() {
         success: function (data) {
             if (data.code === '0') {
                 var result = data.data;
-                var yieldType='';
+
 
                 $('.title-img').attr('src', result.headphoto)
                 $('.title').html(result.name)
+                // 收益率类型
+                var yieldType='';
+                for(var m = 0; m < json.length; m++){
+                   if(result.yield === json[m].dictvalue){
+                        $('.tishi').html(json[m].dictcomment + '收益率');
+                        break;
+                   }
+                }
                 // 判断有无摘要
                 if (result.summary) {
+                    $('section').css('margin-top','-0.5rem')
                     $('.main-recommend').html(result.summary).css('padding','0.05rem 0.11rem 0.11rem')
                 }else {
+                    $('section').css('margin-top','0')
                     $('.main-recommend').html('').css('padding','0')
                 }
-                // 产品增加短描
-                if (result.mainproductdescribes) {
-                    var addArr = result.mainproductdescribes.split(',');
-                    for (var k = 0; k < addArr.length; k++) {
-                        $('.mark-list').prepend("<p style='padding: 2px 4px'>" + addArr[k] + "</p>")
-                    }
-                }
+
                 // 控制按钮
                 $('.idBtn').html(result.displaycopy).css({color: result.copycolor, background: result.buttoncolor})   // 按钮
                 // 多只基金
                 if (result.fundRelatedInfos.length > 0) {
+                    // 产品增加短描
+                    if (result.mainproductdescribes) {
+                        var addArr = result.mainproductdescribes.split(',');
+                        for (var k = 0; k < addArr.length; k++) {
+                            $('.mark-list').prepend("<p style='padding: 2px 4px'>" + addArr[k] + "</p>")
+                        }
+                    }
+
                     $('button').show()
+                    $('.tishi').show()
                     var firstFund = result.fundRelatedInfos[0];
                     $('.fund-title').html(firstFund.fundName) // 基金名称
                     if (firstFund.risk) {  // 风险等级
@@ -142,52 +188,20 @@ function getInformation() {
                             if (fundList[j].risk) {
                                 risk = fundList[j].risk
                             }
-                            if (j < 3) {
-                                $('.fund-container').append(
-                                    "<li>" +
-                                    "<div class='list-left'><p class='profit'>" + yield + "</p><p class='remark'>今年来收益率</p></div>" +
-                                    "<div class='lines'><i class='line'></i></div>" +
-                                    "<div class='list-right'><h3>" + fundList[j].fundName + "</h3><div class='right-bottom'>" +
-                                    showIS(fundList[j].grade, fundList[j].rate, fundList[j].risk, fundList[j].themes, fundList[j].type) +
-                                    "</div>" +
-                                    "</li>"
-                                )
-                            } else if (result.fundRelatedInfos.length === 4) {
-                                $('.fund-container').append(
-                                    "<li>" +
-                                    "<div class='list-left'><p class='profit'>" + yield + "</p><p class='remark'>今年来收益率</p></div>" +
-                                    "<div class='lines'><i class='line'></i></div>" +
-                                    "<div class='list-right'><h3>" + fundList[j].fundName + "</h3><div class='right-bottom'>" +
-                                    showIS(fundList[j].grade, fundList[j].rate, fundList[j].risk, fundList[j].themes, fundList[j].type) +
-                                    "</div>" +
-                                    "</li>"
-                                )
-                            } else if (result.fundRelatedInfos.length > 4 && j === 3) {
-                                $('.fund-container').append(
-                                    "<li>" +
-                                    "<div class='list-left'><p class='profit'>" + yield + "</p><p class='remark'>今年来收益率</p></div>" +
-                                    "<div class='lines'><i class='line'></i></div>" +
-                                    "<div class='list-right'><h3>" + fundList[j].fundName + "</h3><div class='right-bottom'>" +
-                                    showIS(fundList[j].grade, fundList[j].rate, fundList[j].risk, fundList[j].themes, fundList[j].type) +
-                                    "</div>" +
-                                    "</li><li class='li-more' onclick='loadMore(this)'><div>查看更多环保主题基金<i></i></div></li>"
-                                )
-                            } else {
-                                $('.fund-container').append(
-                                    "<li style='display: none'>" +
-                                    "<div class='list-left'><p class='profit'>" + yield + "</p><p class='remark'>今年来收益率</p></div>" +
-                                    "<div class='lines'><i class='line'></i></div>" +
-                                    "<div class='list-right'><h3>" + fundList[j].fundName + "</h3><div class='right-bottom'>" +
-                                    showIS(fundList[j].grade, fundList[j].rate, fundList[j].risk, fundList[j].themes, fundList[j].type) +
-                                    "</div>" +
-                                    "</li>"
-                                )
-                            }
-
+                             $('.fund-container').prepend(
+                                 "<li>" +
+                                 "<div class='list-left'><p class='profit'>" + yield + "</p><p class='remark'>"+$('.tishi').html()+"</p></div>" +
+                                 "<div class='lines'><i class='line'></i></div>" +
+                                 "<div class='list-right'><h3>" + fundList[j].fundName + "</h3><div class='right-bottom'>" +
+                                 showIS(fundList[j].grade, fundList[j].rate, fundList[j].risk, fundList[j].themes, fundList[j].type) +
+                                 "</div>" +
+                                 "</li>"
+                             )
                         }
                     }
                 }else {
                     $('button').hide()
+                    $('.tishi').hide()
                 }
                 // 产品介绍图
                 if(result.productintroducephotos){
@@ -197,6 +211,14 @@ function getInformation() {
                            "<div class='imgList'><img src="+picList[n]+" alt='' /></div>"
                        )
                    }
+                }
+                // 更多按钮
+                if(result.morebutton){
+                    $('.li-more').show().append(
+                        "<a href="+result.link+">"+result.morebutton+"<i></i></a>"
+                    )
+                }else {
+                    $('.li-more').hide();
                 }
 
             } else {
@@ -229,7 +251,7 @@ function showIS(grade, rate, risk, themes, type) {
         }
         str += "<div>" + html.substr(0, html.length-1) + "</div>"
     }
-    if (rate !== 0) {
+    if (rate !== null) {
         if (rate === 0) {
             str += "<div>0费率</div>"
         } else {
