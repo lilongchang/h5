@@ -269,7 +269,7 @@ ul li:after{
     }
 }
 ul .li-more {
-
+    padding: 0.12rem 0.15rem;
     color: rgb(183,141,55);
     text-align: center;
 }
