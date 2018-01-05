@@ -1,7 +1,7 @@
 //参数  id
-
+var uriT = 'http://10.0.12.25:9002/api/v1';
 // 银河评级
-function starList(data) {
+function starList(data) {    ////    //  广告专题   http://10.0.12.26:35118/h5page/html/adSpecial.html?specialtopicid=12312312
     var html = '';
     if (data === '99' || data === null) {
         html = '';
@@ -95,7 +95,7 @@ getInformation()
 function getInformation() {
     var da = {
         data: {
-            specialtopicid: 'aa152826f7b940708fadd45c461dbde5'
+            specialtopicid:'922a0cb7e7b94f9c98a4d3b043daf481'
         }
 
     }
@@ -107,18 +107,19 @@ function getInformation() {
         data: JSON.stringify(da),
         success: function (data) {
             if (data.code === '0') {
+                $('.main').show()
                 var result = data.data;
 
-
+                $('title').html(result.name)
                 $('.title-img').attr('src', result.headphoto)
                 $('.title').html(result.name)
                 // 收益率类型
                 var yieldType='';
                 for(var m = 0; m < json.length; m++){
-                   if(result.yield === json[m].dictvalue){
+                    if(result.yield === json[m].dictvalue){
                         $('.tishi').html(json[m].dictcomment + '收益率');
                         break;
-                   }
+                    }
                 }
                 // 判断有无摘要
                 if (result.summary) {
@@ -141,12 +142,23 @@ function getInformation() {
                         }
                     }
 
-                    $('button').show()
+                    $('.idBtn').show()
                     $('.tishi').show()
                     var firstFund = result.fundRelatedInfos[0];
                     $('.fund-title').html(firstFund.fundName) // 基金名称
                     if (firstFund.risk) {  // 风险等级
-                        $('.risk').html(firstFund.risk).css('padding', '2px 4px')
+                        if(firstFund.risk === '3'){
+                            $('.risk').html('低风险').css('padding', '2px 4px')
+                        }else if(firstFund.risk === '7'){
+                            $('.risk').html('中低风险').css('padding', '2px 4px')
+                        }else if(firstFund.risk === '10'){
+                            $('.risk').html('中风险').css('padding', '2px 4px')
+                        }else if(firstFund.risk === '15'){
+                            $('.risk').html('中高风险').css('padding', '2px 4px')
+                        }else if(firstFund.risk === '20'){
+                            $('.risk').html('高风险').css('padding', '2px 4px')
+                        }
+
                     }
 
                     if (firstFund.themes) {// 主题
@@ -173,7 +185,10 @@ function getInformation() {
                         $('.rates').html(firstFund.yield + '%')   // 收益率
                     }
 
-
+                    // 跳转到基金详情
+                    $('.idBtn').click(function(){
+                        firstgoDetails(firstFund.prodcode,result.button)
+                    })
                     // 超过一只基金的基金列表
                     if (result.fundRelatedInfos.length > 1) {
                         var fundList = result.fundRelatedInfos;
@@ -188,29 +203,30 @@ function getInformation() {
                             if (fundList[j].risk) {
                                 risk = fundList[j].risk
                             }
-                             $('.fund-container').prepend(
-                                 "<li>" +
-                                 "<div class='list-left'><p class='profit'>" + yield + "</p><p class='remark'>"+$('.tishi').html()+"</p></div>" +
-                                 "<div class='lines'><i class='line'></i></div>" +
-                                 "<div class='list-right'><h3>" + fundList[j].fundName + "</h3><div class='right-bottom'>" +
-                                 showIS(fundList[j].grade, fundList[j].rate, fundList[j].risk, fundList[j].themes, fundList[j].type) +
-                                 "</div>" +
-                                 "</li>"
-                             )
+                            var procodes = fundList[j].prodcode;
+                            $('.fund-container').prepend(
+                                "<li data-procode="+procodes+" onclick='goDetails(this)'>" +
+                                "<div class='list-left'><p class='profit'>" + yield + "</p><p class='remark'>"+$('.tishi').html()+"</p></div>" +
+                                "<div class='lines'><i class='line'></i></div>" +
+                                "<div class='list-right'><h3>" + fundList[j].fundName + "</h3><div class='right-bottom'>" +
+                                showIS(fundList[j].grade, fundList[j].rate, fundList[j].risk, fundList[j].themes, fundList[j].type) +
+                                "</div>" +
+                                "</li>"
+                            )
                         }
                     }
                 }else {
-                    $('button').hide()
+                    $('.idBtn').hide()
                     $('.tishi').hide()
                 }
                 // 产品介绍图
                 if(result.productintroducephotos){
-                   var picList = result.productintroducephotos.split(',');
-                   for(var n = 0; n < picList.length; n++){
-                       $('.imgContainer').append(
-                           "<div class='imgList'><img src="+picList[n]+" alt='' /></div>"
-                       )
-                   }
+                    var picList = result.productintroducephotos.split(',');
+                    for(var n = 0; n < picList.length; n++){
+                        $('.imgContainer').append(
+                            "<div class='imgList'><img src="+picList[n]+" alt='' /></div>"
+                        )
+                    }
                 }
                 // 更多按钮
                 if(result.morebutton){
@@ -231,12 +247,34 @@ function getInformation() {
         }
     })
 }
+// 单只基金跳转到详情页面
+function goDetails(that) {
 
+    var procode = $(that).attr('data-procode')
+    window.location = "youyufund://webLink/openFundDetail?fundCode="+procode
+}
+function firstgoDetails(procode, button) {
+    if(button === '1'){
+        window.location = "youyufund://webLink/purchaseFund?fundCode=" + procode
+    }else if(button === '2'){
+        window.location = "youyufund://webLink/regularInvestFund?fundCode=" + procode
+    }
+}
 // 按需求显示短描字段
 function showIS(grade, rate, risk, themes, type) {
     var str = '';
     if (risk) {
-        str += "<div>" + risk + "</div>"
+        if(risk === '3'){
+            str += "<div>低风险</div>"
+        }else if(risk === '7'){
+            str += "<div>中低风险</div>"
+        }else if(risk === '10'){
+            str += "<div>中风险</div>"
+        }else if(risk === '15'){
+            str += "<div>中高风险</div>"
+        }else if(risk === '20'){
+            str += "<div>高风险</div>"
+        }
     }
     if (grade && grade !== '99') {
         str += "<div class='grade'>" + starList(grade) + "</div>"

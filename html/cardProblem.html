@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" id="html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>常见问题</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background:rgb(248,248,248)
+        }
+        ul {
+            background:#fff;
+            margin-top:0.1rem
+        }
+        ul li {
+            position:relative;
+            font-size:0.16rem;
+            color:rgb(51,51,51);
+            padding:0.16rem 0.15rem;
+            border-bottom:1px solid rgb(248,248,248)
+        }
+        ul .problem{
+            font-size:0.15rem;
+            font-wight:700;
+            color:#333;
+        }
+        ul .questions{
+            font-size:0.14rem;
+            color:#666;
+        }
+
+        @media screen and (max-width:700px) {
+            ul li i {
+                display: block;
+                position: absolute;
+                width: 6px;
+                height: 11px;
+                background: url('../img/next1.png') no-repeat;
+                right: 15px;
+                top: 0.21rem;
+            }
+        }
+        @media screen and (min-width:700px)and (max-width: 1000px){
+            ul li i {
+                display: block;
+                position: absolute;
+                width: 9px;
+                height: 17px;
+                background: url('../img/next2.png') no-repeat;
+                right: 15px;
+                top: 0.44rem;
+            }
+        }
+        @media screen and (min-width:1000px) {
+            ul li i {
+                display: block;
+                position: absolute;
+                width: 12px;
+                height: 22px;
+                background: url('../img/next3.png') no-repeat;
+                right: 15px;
+                top: 0.66rem;
+            }
+        }
+        .mabel {
+            font-size:0.15rem;
+            color:#666;
+            padding:0.1rem 0.15rem;
+            margin-top:0.17rem
+        }
+        .telephone {
+            float:right;
+            font-size:0.15rem;
+            color:#666;
+            margin-right:0.2rem
+        }
+    </style>
+</head>
+<body>
+<div>
+    <div>
+        <ul>
+            <li class="problem">
+                用身份证可以开多张银行卡吗？
+            </li>
+            <li class="questions">
+                可以，有鱼支持一户多卡。
+            </li>
+
+        </ul>
+    </div>
+    <p class="mabel">您可能需要</p>
+    <ul style="margin-top:0">
+        <li>
+            意见反馈
+            <i></i>
+        </li>
+
+        <li>
+            联系我们
+            <span class="telephone">010-333333</span>
+            <i></i>
+        </li>
+    </ul>
+</div>
+</body>
+<script src="../js/commen.js"></script>
+</html>
