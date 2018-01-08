@@ -95,7 +95,7 @@ getInformation()
 function getInformation() {
     var da = {
         data: {
-            specialtopicid:'922a0cb7e7b94f9c98a4d3b043daf481'
+            specialtopicid:'647496c84f10485f9bd0e2509f1b5026'
         }
 
     }
@@ -130,10 +130,19 @@ function getInformation() {
                     $('.main-recommend').html('').css('padding','0')
                 }
 
-                // 控制按钮
-                $('.idBtn').html(result.displaycopy).css({color: result.copycolor, background: result.buttoncolor})   // 按钮
                 // 多只基金
                 if (result.fundRelatedInfos.length > 0) {
+                    // 判断是否可以定投或买入
+                    if(result.flag){
+                        // 控制按钮
+                        $('.idBtn').html(result.displaycopy).css({color: result.copycolor, background: result.buttoncolor})   // 按钮
+                        // 跳转到基金详情
+                        $('.idBtn').click(function(){
+                            firstgoDetails(firstFund.prodcode,result.button)
+                        })
+                    }else {
+                        $('.idBtn').html(result.displaycopy).css({color: '#fofofo', background: '#cccccc'})   // 按钮
+                    }
                     // 产品增加短描
                     if (result.mainproductdescribes) {
                         var addArr = result.mainproductdescribes.split(',');
@@ -185,10 +194,6 @@ function getInformation() {
                         $('.rates').html(firstFund.yield + '%')   // 收益率
                     }
 
-                    // 跳转到基金详情
-                    $('.idBtn').click(function(){
-                        firstgoDetails(firstFund.prodcode,result.button)
-                    })
                     // 超过一只基金的基金列表
                     if (result.fundRelatedInfos.length > 1) {
                         var fundList = result.fundRelatedInfos;
@@ -254,6 +259,7 @@ function goDetails(that) {
     window.location = "youyufund://webLink/openFundDetail?fundCode="+procode
 }
 function firstgoDetails(procode, button) {
+    console.log(123)
     if(button === '1'){
         window.location = "youyufund://webLink/purchaseFund?fundCode=" + procode
     }else if(button === '2'){

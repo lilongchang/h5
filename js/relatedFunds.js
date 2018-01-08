@@ -47,10 +47,10 @@ getInformation()
 
 function getInformation() {
     var da = {
-        data: '62330'
+        id: '72142'
     }
     $.ajax({
-        url: uriT + '/app/api/relatedFund/getPageDetail',
+        url: uriT1 + '/app/api/relatedFund/getPageDetail',
         type: "POST",
         dataType: "json",
         contentType: 'application/json;charset=UTF-8',
@@ -81,6 +81,7 @@ function getInformation() {
                 if (result.sellFunds != null) {
                     var sellList = result.sellFunds;
                     for (var i = 0; i < sellList.length; i++) {
+                        console.log(sellList[i])
                         var yield = ''
                         if (sellList[i].marYield) {
                             yield = sellList[i].marYield + '%'
@@ -130,6 +131,7 @@ function getInformation() {
                     var notList = result.notSellFunds;
                     var length = 3
                     for (var j = 0; j < notList.length; j++) {
+                        console.log(notList[j])
                         if (!(notList[j].marYield)) {
                             length++
                             continue;

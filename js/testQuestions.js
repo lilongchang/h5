@@ -95,7 +95,7 @@ function getQuestionList(){
 
     }
     $.ajax({
-        url: uriT + '/customer/riskLevel/getQuestionList',
+        url: uriT1 + '/customer/riskLevel/getQuestionList',
         type : "POST",
         dataType : "json",
         contentType: 'application/json;charset=UTF-8',
@@ -172,7 +172,7 @@ function getResult() {
         }
     }
     $.ajax({
-        url: uriT + '/customer/riskLevel/riskAssessment',
+        url: uriT1 + '/customer/riskLevel/riskAssessment',
         type : "POST",
         dataType : "json",
         contentType: 'application/json;charset=UTF-8',
@@ -180,7 +180,26 @@ function getResult() {
         crossDomain:true,
         success: function(data) {
             if(data.code=='0'){
-                getRisk()
+                getRIskmemo(data.data)
+                var riskClass = data.data;
+                if(riskClass == '0'){
+                    $('.riskType').html('“保守型”')
+                    $('.bestFund').html('保守型')
+                }else if(riskClass == '1'){
+                    $('.riskType').html('“稳健型”')
+                    $('.bestFund').html('稳健型')
+                }else if(riskClass == '2'){
+                    $('.riskType').html('“平衡型”')
+                    $('.bestFund').html('平衡型')
+                }else if(riskClass == '3'){
+                    $('.riskType').html('“积极型”')
+                    $('.bestFund').html('积极型')
+                }else if(riskClass == '4'){
+                    $('.riskType').html('“进取型”')
+                    $('.bestFund').html('进取型')
+                }
+                $('.questionPage').hide()
+                $('.resultTest').show()
             }else{
                 alert(data.msg)
             }
@@ -196,7 +215,7 @@ function getResult() {
             data:'yu2G0KTMU1J71I2BO13113X03U1PXD557'// 客户
         }
          $.ajax({
-             url: uriT + '/customer/getCustomerRiskLevel',
+             url: uriT1 + '/customer/getCustomerRiskLevel',
              type : "POST",
              dataType : "json",
              contentType: 'application/json;charset=UTF-8',
@@ -220,8 +239,9 @@ function getResult() {
                          $('.riskType').html('“进取型”')
                          $('.bestFund').html('进取型')
                      }
-                     getRiskRemark(riskClass);
-                     getRecommendFund(riskClass)
+                     getRIskmemo(riskClass);
+                     // getRiskRemark(riskClass);
+                     // getRecommendFund(riskClass)
                      $('.questionPage').hide()
                      $('.resultTest').show()
                  }else{
@@ -235,8 +255,49 @@ function getResult() {
          })
      }
 }
+
+function getRIskmemo(id){
+    var da = {
+        data:id,
+    };
+    $.ajax({
+        url: 'http://10.0.12.26:35117/app/api/riskAppraisal/getRiskProductPromotion',
+        type : "POST",
+        dataType : "json",
+        contentType: 'application/json;charset=UTF-8',
+        data: JSON.stringify(da),
+        crossDomain:true,
+        success: function(data) {
+            if(data.code=='0'){
+                $('.remark').html(data.data.memo)
+                var result = data.data.appProductPromotions;
+                if(result.length > 0){
+                    $('.recommend-title').show()
+                    $('.fund-list').empty();
+                    for(var i = 0; i < result.length; i++){
+                        $('.fund-list').append(
+                            "<li><p class='title'>"+result[i].title+"</p><p class='sub-title'>"+result[i].memo+"</p><i></i></li>"
+                        )
+                    }
+                }else {
+                    $('.recommend-title').hide()
+                }
+            }else{
+                alert(data.msg)
+            }
+
+        },
+        error: function () {//请求失败处理函数
+            alert('请求失败');
+        }
+    })
+}
+
+
+
+
 //获取类型描述
-function getRiskRemark(id) {
+function getRiskRemark(id) {     // http://10.0.12.26:35117/app/api/riskAppraisal/getRiskProductPromotion
     var da = {
         riskid:id,
     };
@@ -250,6 +311,16 @@ function getRiskRemark(id) {
         success: function(data) {
             if(data.code=='0'){
                $('.remark').html(data.data[0].memo)
+                var result = data.data.appProductPromotions;
+               if(result.length > 0){
+                   $('.fund-list').empty();
+                   for(var i = 0; i < result.length; i++){
+                       $('.fund-list').append(
+                           "<li><p class='title'>"+result[i].title+"</p><p class='sub-title'>"+result[i].memo+"</p><i></i></li>"
+                       )
+                   }
+               }
+
             }else{
                 alert(data.msg)
             }
@@ -295,5 +366,7 @@ function getRecommendFund(code) {
 }
 // 重新评测
 function testAgain() {
-    window.location.href = location.href+'?time='+((new Date()).getTime());
+    console.log(123)
+    window.location.reload()
+    // window.location.href = location.href+'?time='+((new Date()).getTime());
 }
