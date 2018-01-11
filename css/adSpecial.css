@@ -352,3 +352,21 @@ ul .li-more a {
     padding-top: 0.1rem;
     background:rgb(238,238,238);
 }
+footer {
+    padding-bottom:0.1rem;
+}
+footer .youyu{
+    color: rgb(102,102,102);
+    text-align: center;
+    font-size: 0.13rem;
+}
+footer .risk-mark{
+    color: rgb(153,153,153);
+    text-align: center;
+    font-size: 0.12rem;
+    margin-top:0.04rem;
+}
+footer .safe{
+    display: inline-block;
+    color: rgb(58,147,216);
+}

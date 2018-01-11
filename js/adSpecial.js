@@ -154,8 +154,13 @@ function getInformation() {
                     $('.idBtn').show()
                     $('.tishi').show()
                     var firstFund = result.fundRelatedInfos[0];
+
+                    $('.detail').click(function(){
+                        window.location = "youyufund://webLink/openFundDetail?fundCode="+firstFund.prodcode
+                    })
                     $('.fund-title').html(firstFund.fundName) // 基金名称
                     if (firstFund.risk) {  // 风险等级
+                        $('.risk').show()
                         if(firstFund.risk === '3'){
                             $('.risk').html('低风险').css('padding', '2px 4px')
                         }else if(firstFund.risk === '7'){
@@ -175,12 +180,14 @@ function getInformation() {
                         for (var i = 0; i < firstFund.themes.length; i++) {
                             str += firstFund.themes[i]+'、'
                         }
-                        $('.fund-type').html(str.substr(0, str.length-1)).css('padding', '2px 4px')
+                        $('.fund-type').show().html(str.substr(0, str.length-1)).css('padding', '2px 4px')
                     }
                     if (firstFund.grade && firstFund.grade !== '99') {// 银河评级
+                        $('.gradelist').show()
                         $('.grades').html(starList(firstFund.grade)).css('padding', '2px 4px')
                     }
                     if (firstFund.rate !== null) { // 费率
+                        $('.rate').show()
                         if (firstFund.rate === 0) {
                             $('.rate').html('0费率').css('padding', '2px 4px')
                         } else {
@@ -188,7 +195,7 @@ function getInformation() {
                         }
                     }
                     if (firstFund.type) { // 费率
-                        $('.types').html(firstFund.type).css('padding', '2px 4px')
+                        $('.types').show().html(firstFund.type).css('padding', '2px 4px')
                     }
                     if (firstFund.yield) {
                         $('.rates').html(firstFund.yield + '%')   // 收益率
