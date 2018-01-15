@@ -47,7 +47,7 @@ getInformation()
 
 function getInformation() {
     var da = {
-        id: '72142'
+        id: '60107'
     }
     $.ajax({
         url: uriT1 + '/app/api/relatedFund/getPageDetail',
@@ -88,9 +88,10 @@ function getInformation() {
                         } else {
                             yield = 0
                         }
+                        var procodes = sellList[i].prodcode;
                         if (i < 2) {
                             $('.fund-container').append(
-                                "<li>" +
+                                "<li onclick='goDetails(this)' data-procode="+procodes+">" +
                                 "<div class='list-left'><p class='profit'>" + yield + "</p><p class='remark'>近三个月收益</p></div>" +
                                 "<div class='list-right'><h3>" + sellList[i].fundShort + "</h3><div class='right-bottom'><div class='type'>" + sellList[i].label + "</div>" +
                                 "<div class='grade'><label>评级</label> " + starList(sellList[i].milkyWayRating) + "</div>" +
@@ -99,7 +100,7 @@ function getInformation() {
                             )
                         } else if (sellList.length === 3) {
                             $('.fund-container').append(
-                                "<li>" +
+                                "<li onclick='goDetails(this)' data-procode="+procodes+">" +
                                 "<div class='list-left'><p class='profit'>" + yield + "</p><p class='remark'>近三个月收益</p></div>" +
                                 "<div class='list-right'><h3>" + sellList[i].fundShort + "</h3><div class='right-bottom'><div class='type'>" + sellList[i].label + "</div>" +
                                 "<div class='grade'><label>评级</label> " + starList(sellList[i].milkyWayRating) + "</div>" +
@@ -108,7 +109,7 @@ function getInformation() {
                             )
                         } else if (i === 2 && sellList.length > 3) {
                             $('.fund-container').append(
-                                "<li>" +
+                                "<li onclick='goDetails(this)' data-procode="+procodes+">" +
                                 "<div class='list-left'><p class='profit'>" + yield + "</p><p class='remark'>近三个月收益</p></div>" +
                                 "<div class='list-right'><h3>" + sellList[i].fundShort + "</h3><div class='right-bottom'><div class='type'>" + sellList[i].label + "</div>" +
                                 "<div class='grade'><label>评级</label>  " + starList(sellList[i].milkyWayRating) + "</div>" +
@@ -117,7 +118,7 @@ function getInformation() {
                             )
                         } else {
                             $('.fund-container').append(
-                                "<li style='display: none'>" +
+                                "<li onclick='goDetails(this)' data-procode="+procodes+"  style='display: none'>" +
                                 "<div class='list-left'><p class='profit'>" + yield + "</p><p class='remark'>近三个月收益</p></div>" +
                                 "<div class='list-right'><h3>" + sellList[i].fundShort + "</h3><div class='right-bottom'><div class='type'>" + sellList[i].label + "</div>" +
                                 "<div class='grade'><label>评级</label> " + starList(sellList[i].milkyWayRating) + "</div>" +
@@ -137,9 +138,10 @@ function getInformation() {
                             continue;
 
                         }
+                        var procodes = notList[j].prodcode;
                         if (j < length) {
                             $('.fund-container').append(
-                                "<li>" +
+                                "<li onclick='goDetails(this)' data-procode="+procodes+">" +
                                 "<div class='list-left'><p class='profit'>" + notList[j].marYield + '%' + "</p><p class='remark'>近三个月收益</p></div>" +
                                 "<div class='list-right'><h3>" + notList[j].fundShort + "</h3><div class='right-bottom'><div class='type'>" + notList[j].label + "</div>" +
                                 "<div class='grade'><label>评级</label> " + starList(notList[j].milkyWayRating) + "</div>" +
@@ -178,5 +180,10 @@ $(document).ready(function () {
     };
 
 })
+function goDetails(that) {
+    var procode = $(that).attr('data-procode')
+    console.log(procode)
+    // window.location = "youyufund://webLink/openFundDetail?fundCode="+procode
+}
 
 
