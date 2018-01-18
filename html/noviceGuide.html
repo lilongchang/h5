@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" id="html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>新手指南</title>
+    <link rel="stylesheet" href="../css/commen.css">
+    <style>
+        header{
+            padding:0.2rem 0.1rem 0.05rem;
+        }
+        header .table-list{
+            float:left;
+            font-size:0.16rem;
+            color:rgb(102,102,102);
+            text-align:center;
+            width:25%
+        }
+        header .active-list{
+            color:rgb(251,174,23)
+        }
+        .table-list .active{
+            width:60%;
+            display:inline-block;
+        }
+        .table-list .active img{
+            width:100%
+        }
+        section div img{
+            width:100%
+        }
+        .introduction{
+            position:relative;
+        }
+        .introduction .look-fund {
+            width:92%;
+            /*height:0.5rem;*/
+            position:absolute;
+            line-height:0;
+            left:4%;
+            bottom:0.75rem;
+        }
+        .introduction .look-fund img{
+            width:100%
+        }
+    </style>
+</head>
+<body>
+<div>
+    <header class="clearfix">
+        <div class="table-list active-list" onclick="fundShow(this)">
+            基金介绍
+            <div class="active">
+                <img src="../img/btmimg.png" alt="">
+            </div>
+        </div>
+        <div class="table-list" onclick="buyShow(this)">
+            买入流程
+            <div class="active" style="display:none">
+                <img src="../img/btmimg.png" alt="">
+            </div>
+        </div>
+        <div class="table-list" onclick="sellShow(this)">
+            卖出流程
+            <div class="active" style="display:none">
+                <img src="../img/btmimg.png" alt="">
+            </div>
+        </div>
+        <div class="table-list" onclick="problemShow(this)">
+            常见问题
+            <div class="active" style="display:none">
+                <img src="../img/btmimg.png" alt="">
+            </div>
+        </div>
+    </header>
+    <section>
+        <div class="introduction">
+            <img src="../img/fund.png" alt="">
+            <div class="look-fund" onclick="lookFund()">
+                <img src="../img/link.png" alt="">
+            </div>
+        </div>
+        <div class="buying-process" style="display:none">
+            <img src="../img/buy.png" alt="">
+        </div>
+        <div class="selling-process" style="display:none">
+            <img src="../img/sell.png" alt="">
+        </div>
+        <div class="common-problem" style="display:none">
+            <img src="../img/problem.png" alt="">
+        </div>
+    </section>
+</div>
+</body>
+<script src="../js/zepto.min.js"></script>
+<script src="../js/commen.js"></script>
+<script>
+    function fundShow(that){
+        $(that).find('.active').show()
+        $(that).addClass('active-list').siblings().removeClass('active-list').find('.active').hide()
+        $('.introduction').show()
+        $('.buying-process').hide()
+        $('.selling-process').hide()
+        $('.common-problem').hide()
+    }
+    function buyShow(that){
+        $(that).find('.active').show()
+        $(that).addClass('active-list').siblings().removeClass('active-list').find('.active').hide()
+        $('.introduction').hide()
+        $('.buying-process').show()
+        $('.selling-process').hide()
+        $('.common-problem').hide()
+    }
+    function sellShow(that){
+        $(that).find('.active').show()
+        $(that).addClass('active-list').siblings().removeClass('active-list').find('.active').hide()
+        $('.introduction').hide()
+        $('.buying-process').hide()
+        $('.selling-process').show()
+        $('.common-problem').hide()
+    }
+    function problemShow(that){
+        $(that).find('.active').show()
+        $(that).addClass('active-list').siblings().removeClass('active-list').find('.active').hide()
+        $('.introduction').hide()
+        $('.buying-process').hide()
+        $('.selling-process').hide()
+        $('.common-problem').show()
+    }
+    function lookFund(){
+
+    }
+</script>
+</html>

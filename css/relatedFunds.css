@@ -72,7 +72,8 @@ ul li:after{
         width: 10px;
         margin-left: 1px;
         height: 10px;
-        background: url('../img/starfill1.png') no-repeat;
+        background: url('../img/starfill2.png') no-repeat;
+        background-size:100% 100%
     }
 
     .grade .bg-active{
@@ -80,7 +81,8 @@ ul li:after{
         width: 11px;
         margin-left: 1px;
         height: 10px;
-        background: url('../img/star11.png') no-repeat;
+        background: url('../img/star22.png') no-repeat;
+        background-size:100% 100%
     }
 }
 @media screen and (min-width:700px)and (max-width: 1000px){
@@ -153,4 +155,13 @@ section img{
 }
 .more-fund{
     text-align: center;
+}
+.list-left .add {
+    color: #ff4a43
+}
+.list-left .flow {
+    color: #34af21
+}
+.list-left .zero {
+    color: #333333
 }

@@ -95,7 +95,7 @@ getInformation()
 function getInformation() {
     var da = {
         data: {
-            specialtopicid:'647496c84f10485f9bd0e2509f1b5026'
+            specialtopicid:'7765cf75ae074ef589d0d75f5898056e'
         }
 
     }
@@ -198,27 +198,64 @@ function getInformation() {
                         $('.types').show().html(firstFund.type).css('padding', '2px 4px')
                     }
                     if (firstFund.yield) {
-                        $('.rates').html(firstFund.yield + '%')   // 收益率
+                        if(firstFund.yield < 0){
+                            $('.rates').css('color','#34af21')
+                        }
+                        if(result.yield == '7D'){
+                            $('.rates').html(firstFund.yield.toFixed(4) + '%')   // 收益率
+                        }else {
+                            $('.rates').html(firstFund.yield.toFixed(2) + '%')   // 收益率
+                        }
+                    }else if(firstFund.yield == '0'){
+                        $('.rates').css('color','#333333')
+                        if(result.yield == '7D'){
+                            $('.rates').html(firstFund.yield.toFixed(4) + '%')   // 收益率
+                        }else {
+                            $('.rates').html(firstFund.yield.toFixed(2) + '%')   // 收益率
+                        }
+                    }else {
+                        $('.rates').html('--').css('color','#333333')   // 收益率
                     }
 
                     // 超过一只基金的基金列表
                     if (result.fundRelatedInfos.length > 1) {
                         var fundList = result.fundRelatedInfos;
                         for (var j = 1; j < fundList.length; j++) {
-                            var yield = ''
+                            var yield = '';
+                            var addStyle;
                             if (fundList[j].yield) {
-                                yield = fundList[j].yield + '%'
+                                // 控制收益率颜色
+                               if(fundList[j].yield >0){
+                                   addStyle='add'
+                                }else if(fundList[j].yield <0){
+                                   addStyle='flow'
+                               }
+                                // 控制收益率保留小数
+                                if(result.yield == '7D'){
+                                    yield = fundList[j].yield.toFixed(4) + '%';
+                                }else {
+                                    yield = fundList[j].yield.toFixed(2) + '%';
+                                }
+                            }else if(fundList[j].yield == '0'){
+                                addStyle='zero'
+                                // 控制收益率保留小数
+                                if(result.yield == '7D'){
+                                    yield = fundList[j].yield.toFixed(4) + '%';
+                                }else {
+                                    yield = fundList[j].yield.toFixed(2) + '%';
+                                }
                             } else {
-                                yield = 0
+                                yield = '--';
+                                addStyle='zero'
                             }
                             var risk = '';
                             if (fundList[j].risk) {
                                 risk = fundList[j].risk
                             }
                             var procodes = fundList[j].prodcode;
-                            $('.fund-container').prepend(
+                            $('.fund-container').append(
                                 "<li data-procode="+procodes+" onclick='goDetails(this)'>" +
-                                "<div class='list-left'><p class='profit'>" + yield + "</p><p class='remark'>"+$('.tishi').html()+"</p></div>" +
+                                "<div class='list-left'><p class='profit "+addStyle+"'>" + yield + "</p><p class='remark'>"+$('.tishi').html()+"</p></div>" +
                                 "<div class='lines'><i class='line'></i></div>" +
                                 "<div class='list-right'><h3>" + fundList[j].fundName + "</h3><div class='right-bottom'>" +
                                 showIS(fundList[j].grade, fundList[j].rate, fundList[j].risk, fundList[j].themes, fundList[j].type) +

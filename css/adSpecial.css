@@ -139,7 +139,7 @@ section .rates {
     font-size: 0.12rem;
 }
 
-button {
+.idBtn {
     width: 1.70rem;
     height: 0.36rem;
     color: #fff;
@@ -191,13 +191,13 @@ ul li:after{
 .right-bottom>div {
     float: left;
     color: #b38b39;
-    font-size: 0.12rem;
-    height: 0.19rem;
-    line-height: 0.20rem;
+    font-size: 0.11rem;
+    /*height: 0.19rem;*/
+    /*line-height: 0.20rem;*/
     vertical-align: middle;
     margin-top: .05rem;
-    background: #fff0de;
-    padding: 2px 5px;
+    background: rgb(255, 246, 229);
+    padding: 2px 4px;
     margin-right: 2px;
     border-radius: 2px;
 }
@@ -369,4 +369,13 @@ footer .risk-mark{
 footer .safe{
     display: inline-block;
     color: rgb(58,147,216);
+}
+.list-left .add {
+    color: #ff4a43
+}
+.list-left .flow {
+    color: #34af21
+}
+.list-left .zero {
+    color: #333333
 }
