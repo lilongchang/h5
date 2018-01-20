@@ -44,10 +44,10 @@ ul li:after{
     float: left;
     color: #b38b39;
     font-size: 0.12rem;
-    height: 0.19rem;
-    line-height: 0.20rem;
+    /*height: 0.19rem;*/
+    /*line-height: 0.20rem;*/
     vertical-align: middle;
-    margin-top: .05rem;
+    margin-top: .04rem;
     background: #fff0de;
     padding: 2px 5px;
     border-radius: 2px;

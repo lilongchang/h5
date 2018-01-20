@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    <meta name="renderer" content="webkit">
+    <meta name="viewport"
+          content="width=device-width,height=device-height,minimum-scale=0,maximum-scale=1.0,user-scalable=yes">
+    <title>有鱼基金后台管理系统</title>
+    <link href="../../../css/comm.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../../../plugins/laypage/skin/laypage.css">
+    <link rel="stylesheet" href="../../../css/dataCenter/reportComment.css">
+    <script src="../../../js/jquery.js"></script>
+    <script src="../../../plugins/layer/layer.js"></script>
+    <script src="../../../plugins/laypage/laypage.js"></script>
+    <script type='text/javascript' src='../../../js/laydate/laydate.js'></script>
+    <script src="../../../js/domain.js"></script>
+    <script src="../../../js/common.js"></script>
+    <STYLE>
+        .content .accountType {
+            width:328px;
+            cursor:pointer;
+            height: 40px;
+            background: #ffffff;
+            line-height: 40px;
+            font-size: 14px;
+            color: #333333;
+        }
+        .content .accountType .active{
+            font-weight: 700;
+            border-bottom: 2px solid #ff6c60;
+        }
+        .content .accountType>div {
+            display: inline-block;
+            width: 49%;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        .loading{
+            width: 60px;
+            height: 60px;
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            z-index: 10;
+        }
+        .mengbanD{
+            width: 100%;
+            height: 100%;
+            min-width: 1200px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            background: #fff;
+            opacity: 0.6;
+            z-index: 2;
+        }
+    </STYLE>
+</head>
+<body style="background: #f1f1f2">
+<div class="content" style="position: relative">
+    <div class="content-title">
+        <p>基金风险等级处理</p>
+        <p>RISK GRADE TREATMENT OF FUND</p>
+    </div>
+    <div class="accountType">
+        <div class="personal active" onclick="switchTable(this)" data-attr="1">风险等级查询</div>
+        <div class="mechanism" onclick="switchTable(this)" data-attr="2">风向等级不一致查询</div>
+    </div>
+    <div class="riskQuery">
+        <div class="search">
+            <ul>
+                <li>
+                    <label>基金代码:</label>
+                    <input type="text" class="secucode">
+                </li>
+                <li class="btnSearch" onclick="searchBtn()">查询</li>
+            </ul>
+        </div>
+        <div style="color: #333;font-size: 14px; border-left:1px solid #ff6c60;font-weight: 600;margin-top: 20px"> <p style="margin-left: 10px; line-height: 16px">搜索结果</p></div>
+        <div class="mainTable" style="border: 1px solid #e5e5e5">
+            <table>
+                <tr class="firstTr">
+                    <th>基金代码</th>
+                    <th>基金简称</th>
+                    <th>基金类型</th>
+                    <th>基金类型2</th>
+                    <th>是否在售</th>
+                    <th>风险等级</th>
+                    <th>操作</th>
+                </tr>
+                <tbody class="mainTbody mainTbody1">
+                </tbody>
+            </table>
+        </div>
+        <div class="clearfix">
+            <div id="layPage1"></div>
+        </div>
+    </div>
+    <div class="risk-no" style="display:none">
+        <div class="loading" style="display: none">
+            <img src="../../../img/load01.gif" alt="">
+        </div>
+        <div class="mengbanD" style="display: none"></div>
+        <div class="search">
+            <ul>
+                <li class="btnSearch" style="float:right;padding:0 5px" onclick="synchronizationAll()">同步所有</li>
+            </ul>
+        </div>
+        <div style="color: #333;font-size: 14px; border-left:1px solid #ff6c60;font-weight: 600;margin-top: 20px"> <p style="margin-left: 10px; line-height: 16px">信息列表</p></div>
+        <div class="mainTable" style="border: 1px solid #e5e5e5">
+            <table>
+                <tr class="firstTr">
+                    <th>产品(基金)代码</th>
+                    <th>TA编号</th>
+                    <th>产品(基金)名称</th>
+                    <th>产品(基金)简称</th>
+                    <th>基金状态</th>
+                    <th>arg风险等级</th>
+                    <th>聚源风险等级</th>
+                    <th>操作</th>
+                </tr>
+                <tbody class="mainTbody mainTbody2">
+                </tbody>
+            </table>
+        </div>
+        <div class="clearfix">
+            <div id="layPage2"></div>
+        </div>
+    </div>
+
+
+</div>
+<!--蒙版-->
+<div class="mengban" style="display: none"></div>
+<script>
+    // 菜单切换
+    function switchTable(that){
+        if($(that).attr('data-attr') == '1'){
+            $('.risk-no').hide()
+            $('.riskQuery').show()
+            $(that).addClass('active').siblings('div').removeClass('active')
+        }else if($(that).attr('data-attr') == '2'){
+            $('.riskQuery').hide()
+            $('.risk-no').show()
+            init()
+            $(that).addClass('active').siblings('div').removeClass('active')
+        }
+    }
+    // 初始化table列表
+    function searchBtn(curr) {
+        var da = {
+            menuId: '123456',		                //菜单id
+            pageNo: curr || 1,
+            pageSize: 10,
+            secucode:$('.secucode').val(),
+        };
+        $.extend(da, userInfo);
+        $.ajax({
+            url: _da.uriT+'/prodRiskLevel/queryByProdcode',
+            method: 'POST',
+            contentType: 'application/json;charset=UTF-8',
+            crossDomain: true,
+            data: JSON.stringify(da),
+            success: function (data) {
+                if (data.code == '0') {
+                    var data = data.data;
+                    var result = data.result;
+                    $('.mainTbody1').empty();
+                    for (var i = 0; i < result.length; i++) {
+                        var issell = '';
+                        if(result[i].issell == '0'){
+                            issell = '未售';
+                        }else if(result[i].issell == '1'){
+                            issell = '在售';
+                        }
+                        $('.mainTbody1').append(
+                                "<tr>" +
+                                "<td>" + result[i].secucode + "</td>" +
+                                "<td>" + result[i].chinameabbr + "</td>" +
+                                "<td>" + result[i].fundtype + "</td>" +
+                                "<td>" + result[i].fundtype2 + "</td>" +
+                                "<td>" + issell + "</td>" +
+                                "<td class='levelcode' data-levelcode="+result[i].levelcode+"></td>" +
+                                "<td><span  onclick='synchronization(this)' data-procode="+result[i].secucode+">同步</span></td>" +
+                                "</tr>"
+                        )
+                    }
+                    getDictHtml('100072',$('.levelcode'),'data-levelcode')
+                    // 分页
+                    laypage({
+                        cont: 'layPage1', //容器。值支持id名、原生dom对象，jquery对象。【如该容器为】：<div id="page1"></div>
+                        pages: Math.ceil(data.total / 10), //通过后台拿到的总页数
+                        curr: curr || 1, //当前页
+                        skin: 'molv',
+                        skip: true, //是否开启跳页
+                        jump: function (obj, first) { //触发分页后的回调
+                            if (!first) { //点击跳页触发函数自身，并传递当前页：obj.curr
+                                searchBtn(obj.curr);
+                            }
+                        }
+                    });
+                } else {
+                    alert(data.msg)
+                }
+            },
+            error: function () {//请求失败处理函数
+                alert('请求失败');
+            }
+        })
+    }
+    // 同步
+    function synchronization(that){
+        var da = {
+            prodcode:$(that).attr('data-procode'),
+        };
+        $.extend(da, userInfo);
+        $.ajax({
+            url: _da.uriT+'/prodRiskLevel/synByProdcode',
+            method: 'POST',
+            contentType: 'application/json;charset=UTF-8',
+            crossDomain: true,
+            data: JSON.stringify(da),
+            success: function (data) {
+                if (data.code == '0') {
+                    layer.msg('同步成功', {icon: 1,time:1000});
+                } else {
+                    alert(data.msg)
+                }
+            },
+            error: function () {//请求失败处理函数
+                alert('请求失败');
+            }
+        })
+    }
+    // 不一致查询
+    function init() {
+        $('.loading').show();
+        $('.mengbanD').show();
+        var da = {
+        };
+        $.extend(da, userInfo);
+        $.ajax({
+            url: _da.uriT+'/prodRiskLevel/queryDiffData',
+            method: 'POST',
+            contentType: 'application/json;charset=UTF-8',
+            crossDomain: true,
+            data: JSON.stringify(da),
+            success: function (data) {
+                if (data.code == '0') {
+                    $('.loading').hide();
+                    $('.mengbanD').hide();
+                    var result = data.data;
+                    $('.mainTbody2').empty();
+                    for (var i = 0; i < result.length; i++) {
+                        var issell = '';
+                        if(result[i].issell == '0'){
+                            issell = '未售';
+                        }else if(result[i].issell == '1'){
+                            issell = '在售';
+                        }
+                        $('.mainTbody2').append(
+                                "<tr data-procode="+result[i].prodcode+">" +
+                                "<td>" + result[i].prodcode + "</td>" +
+                                "<td>" + result[i].tano+ "</td>" +
+                                "<td>" + result[i].productname + "</td>" +
+                                "<td>" + result[i].productshortname + "</td>" +
+                                "<td class='fundstate' data-fundstate="+result[i].fundstate+"></td>" +
+                                "<td class='fundrisklevel' data-fundrisklevel="+result[i].fundrisklevel+"></td>" +
+                                "<td class='jydbrisklevel' data-jydbrisklevel="+result[i].jydbrisklevel+"></td>" +
+                                "<td><span  onclick='synchronization2(this)' data-procode="+result[i].prodcode+">同步</span></td>" +
+                                "</tr>"
+                        )
+                    }
+                    getDictHtml('100072',$('.fundrisklevel'),'data-fundrisklevel')
+                    getDictHtml('100072',$('.jydbrisklevel'),'data-jydbrisklevel')
+                    getDictHtml('100046',$('.fundstate'),'data-fundstate')
+
+                } else {
+                    $('.loading').hide();
+                    $('.mengbanD').hide();
+                    alert(data.msg)
+                }
+            },
+            error: function () {//请求失败处理函数
+                $('.loading').hide();
+                $('.mengbanD').hide();
+                alert('请求失败');
+            }
+        })
+    }
+    // 同步
+    function synchronization2(that){
+        var da = {
+            prodcode:$(that).attr('data-procode'),
+        };
+        $.extend(da, userInfo);
+        $.ajax({
+            url: _da.uriT+'/prodRiskLevel/synByProdcode',
+            method: 'POST',
+            contentType: 'application/json;charset=UTF-8',
+            crossDomain: true,
+            data: JSON.stringify(da),
+            success: function (data) {
+                if (data.code == '0') {
+                    $(that).parent().parent().remove()
+                    layer.msg('同步成功', {icon: 1,time:1000});
+                } else {
+                    alert(data.msg)
+                }
+            },
+            error: function () {//请求失败处理函数
+                alert('请求失败');
+            }
+        })
+    }
+    // 同步所有
+    function synchronizationAll(){
+        $('.loading').show();
+        $('.mengbanD').show();
+        var da = {
+
+        };
+        $.extend(da, userInfo);
+        $.ajax({
+            url: _da.uriT+'/prodRiskLevel/synAll',
+            method: 'POST',
+            contentType: 'application/json;charset=UTF-8',
+            crossDomain: true,
+            data: JSON.stringify(da),
+            success: function (data) {
+                if (data.code == '0') {
+                    $('.loading').hide();
+                    $('.mengbanD').hide();
+                    $('.mainTbody2').empty()
+                    layer.msg('同步成功', {icon: 1,time:1000});
+                } else {
+                    $('.loading').hide();
+                    $('.mengbanD').hide();
+                    alert(data.msg)
+                }
+            },
+            error: function () {//请求失败处理函数
+                $('.loading').hide();
+                $('.mengbanD').hide();
+                alert('请求失败');
+            }
+        })
+    }
+
+</script>
+</body>
+</html>
