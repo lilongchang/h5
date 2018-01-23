@@ -254,7 +254,7 @@ getInformation()
 
 function getInformation() {
     var da = {
-        data: '65654'
+        data: '81938'
     }
     $.ajax({
         url: 'http://26.gs.youyufund.com/app/api/relatedFund/getPageDetail',
@@ -271,23 +271,33 @@ function getInformation() {
                 $('.subtitle').html(content.sourceName);
                 var contentHtml = content.clearContent;
                 // 调用android方法
-                var imgJson = content.photos;
-                var imgArr = [];
+                if(content.photos){
+                    var imgJson = content.photos;
+                    var imgArr = [];
 
-                // for (var k = 0; k < imgJson.length; k++) {
-                //     imgArr.push({
-                //         "index": k,
-                //         "url": imgJson[k]
-                //     })
-                //     isImgBig.push(imgJson[k])
-                // }
-                // youyufund.setImages(JSON.stringify(imgArr));
+                    for (var k = 0; k < imgJson.length; k++) {
+                        imgArr.push({
+                            "index": k,
+                            "url": imgJson[k]
+                        })
+                        isImgBig.push(imgJson[k])
+                    }
+                    console.log(imgArr)
+                    console.log(isImgBig)
+
+                    // youyufund.setImages(JSON.stringify(imgArr));
+                    // WebViewJavascriptBridge.callHandler('setImages', JSON.stringify(imgArr),null  );
+                    // setupWebViewJavascriptBridge(function(bridge) {
+                    //     bridge.callHandler('setImages', JSON.stringify(imgArr), function(response) {})
+                    // })
+                    // ///////
+                }
                 // ///////
                 $('section').html(contentHtml.replace(/\n/g, ''));
                 //代销基金
-                if (1) {
-                    // var sellList = result.sellFunds;
-                    var sellList = dataArr;
+                if (result.sellFunds) {
+                    var sellList = result.sellFunds;
+                    // var sellList = dataArr;
 
                     for (var i = 0; i < sellList.length; i++) {
                         var yield = ''
@@ -387,8 +397,10 @@ $(document).ready(function () {
         e = e || window.event;
         var list = e.target || e.srcElement;
         if (list.nodeName.toLowerCase() === 'img') {
+
             for (var i = 0; i < isImgBig.length; i++) {
                 if (list.getAttribute('src') === isImgBig[i]) {
+                    console.log(i)
                     // youyufund.openGallery(i);
                     break
                 }

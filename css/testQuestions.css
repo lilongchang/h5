@@ -82,10 +82,12 @@ ul li{
         display: block;
         width: 20px;
         height: 21px;
-        background: url('../img/noCheck.png') no-repeat;
+        background: url('../img/noxuan2.png') no-repeat;
+        background-size:100% 100%;
     }
     .questionList ul li .active{
-        background: url('../img/checked.png') no-repeat;
+        background: url('../img/xuan2.png') no-repeat;
+        background-size:100% 100%;
     }
 }
 @media screen and (min-width:700px) {
@@ -154,10 +156,12 @@ ul li{
         margin-top: 2px;
         width: 14px;
         height: 15px;
-        background: url('../img/sure_logo.png') no-repeat;
+        background: url('../img/isMy2.png') no-repeat;
+        background-size:100% 100%;
     }
     .submit .activeit{
-        background: url('../img/sure_logo1.png') no-repeat;
+        background: url('../img/isMy2 (2).png') no-repeat;
+        background-size:100% 100%;
     }
 }
 @media screen and (min-width:700px) {

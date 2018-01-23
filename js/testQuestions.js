@@ -95,7 +95,7 @@ function getQuestionList(){
 
     }
     $.ajax({
-        url: 'http://26.gs.youyufund.com//customer/riskLevel/getQuestionList',
+        url: 'http://26.gs.youyufund.com/customer/riskLevel/getQuestionList',
         type : "POST",
         dataType : "json",
         contentType: 'application/json;charset=UTF-8',
