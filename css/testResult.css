@@ -19,7 +19,7 @@ body {
     display: inline-block;
     width: 80px;
     height: 81px;
-    background: url('../img/finish.png') no-repeat;
+    background: url('../img/finashed-2.png') no-repeat;
 }
 
 .text {
@@ -28,7 +28,7 @@ body {
 
 .text .riskType {
     font-size: 26px;
-    color: rgb(179, 139, 57);
+    color: #ff7100;
 }
 
 .remark {
@@ -47,19 +47,19 @@ body {
 
 .finishBtn {
     color: #ffffff;
-    background: rgb(180, 140, 48);
+    background: linear-gradient(to right,#ff943f, #ff5f57);
     margin-top: 65px;
 }
 
 .refreshBtn {
-    border: 1px solid rgba(179, 139, 57, .5);
+    border: 1px solid #ff7100;
     margin-top: 20px;
     margin-bottom: 49px;
 }
 .refreshBtn a {
     display: block;
     text-decoration: none;
-    color: rgb(179, 139, 57);
+    color: #ff7100;
 }
 
 .recommend-title {

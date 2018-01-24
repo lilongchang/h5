@@ -14,7 +14,7 @@ ul li{
 .Progress{
     height: 4px;
     position: relative;
-    background: #f5e6c8;
+    background: #fff0de;
 }
 .Progress .step {
     position: absolute;
@@ -22,7 +22,7 @@ ul li{
     height: 4px;
     left: 0;
     top:0;
-    background: #b38b39;
+    background: linear-gradient(to right,#ff943f, #ff5f57);
 }
 .serialNum {
     padding: 0.3rem .15rem .2rem .15rem;
@@ -30,17 +30,17 @@ ul li{
 .serialNum .nowOrder {
     font-size: 0.44rem;
     height: 0.24rem;
-    color: rgb(179,139,57);
+    color: #ff7100;
     line-height: 0.24rem;
     font-family: PingFangSC-Medium;
 }
 .totalQuestion, .division {
-    color: rgb(225,208,171);
+    color: #ffb87f;
     font-size: 0.15rem;
 }
 .questions {
     padding: 0 15px;
-    color: rgb(179,139,57) ;
+    color: #ff7100 ;
     font-size: .15rem;
     margin-bottom:0.36rem;
 }
@@ -82,11 +82,11 @@ ul li{
         display: block;
         width: 20px;
         height: 21px;
-        background: url('../img/noxuan2.png') no-repeat;
+        background: url('../img/checkno-2-s.png') no-repeat;
         background-size:100% 100%;
     }
     .questionList ul li .active{
-        background: url('../img/xuan2.png') no-repeat;
+        background: url('../img/checked-2-s.png') no-repeat;
         background-size:100% 100%;
     }
 }
@@ -98,10 +98,10 @@ ul li{
         display: block;
         width: 40px;
         height: 42px;
-        background: url('../img/noxuan2.png') no-repeat;
+        background: url('../img/checkno-2-s.png') no-repeat;
     }
     .questionList ul li .active{
-        background: url('../img/xuan2.png') no-repeat;
+        background: url('../img/checked-2-s.png') no-repeat;
     }
 }
 
@@ -120,7 +120,7 @@ ul li{
     display: inline-block;
     margin-bottom: 0.25rem;
     font-size: 0.14rem;
-    color: rgb(179,139,57) ;
+    color: #ff7100 ;
 }
 .submit {
     /*padding:0 15px 30px 15px;*/
@@ -141,7 +141,7 @@ ul li{
     height: 0.5rem;
     line-height: 0.5rem;
     border-radius: 2px;
-    background: rgb(180, 140, 48);
+    background: linear-gradient(to right,#ff943f, #ff5f57);
 }
 .submit .sure a {
     color: #ffffff;
@@ -156,11 +156,11 @@ ul li{
         margin-top: 2px;
         width: 14px;
         height: 15px;
-        background: url('../img/isMy2.png') no-repeat;
+        background: url('../img/isMyno-2-s.png') no-repeat;
         background-size:100% 100%;
     }
     .submit .activeit{
-        background: url('../img/isMy2 (2).png') no-repeat;
+        background: url('../img/isMyed-2-s.png') no-repeat;
         background-size:100% 100%;
     }
 }
@@ -170,10 +170,10 @@ ul li{
         margin-top: 13px;
         width: 28px;
         height: 28px;
-        background: url('../img/isMy2.png') no-repeat;
+        background: url('../img/isMyno-2-s.png') no-repeat;
     }
     .submit .activeit{
-        background: url('../img/isMy2 (2).png') no-repeat;
+        background: url('../img/isMyed-2-s.png') no-repeat;
     }
 }
 
