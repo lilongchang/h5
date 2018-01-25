@@ -61,19 +61,19 @@ getInformation()
             "prodCode": "161725",
             "fundShort": "招商中证白酒指数分级",
             "label": "酿酒行业",
-            "milkyWayRating": "99",
+            "milkyWayRating": "3",
             "marYield": 14.0652
         }, {
             "prodCode": "160632",
             "fundShort": "鹏华中证酒指数分级",
             "label": "酿酒行业",
-            "milkyWayRating": "99",
+            "milkyWayRating": "3",
             "marYield": 0
         }, {
             "prodCode": "002595",
             "fundShort": "博时工业4.0主题股票",
             "label": "工业4.0",
-            "milkyWayRating": "99",
+            "milkyWayRating": "5",
             "marYield": -23
         }, {
             "prodCode": "519132",
@@ -254,7 +254,7 @@ getInformation()
 
 function getInformation() {
     var da = {
-        data: '81938'
+        data: '65654'
     }
     $.ajax({
         url: 'http://26.gs.youyufund.com/app/api/relatedFund/getPageDetail',
@@ -296,8 +296,8 @@ function getInformation() {
                 $('section').html(contentHtml.replace(/\n/g, ''));
                 //代销基金
                 if (result.sellFunds) {
-                    var sellList = result.sellFunds;
-                    // var sellList = dataArr;
+                    // var sellList = result.sellFunds;
+                    var sellList = dataArr;
 
                     for (var i = 0; i < sellList.length; i++) {
                         var yield = ''
@@ -357,7 +357,8 @@ function getInformation() {
                     }
                 }
                 else if (result.notSellFunds != null) {
-                    var notList = result.notSellFunds;
+                    // var notList = result.notSellFunds;
+                    var notList =  dataArr;;
                     var length = 3
                     for (var j = 0; j < notList.length; j++) {
                         console.log(notList[j])

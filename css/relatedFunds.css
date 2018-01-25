@@ -42,13 +42,13 @@ ul li:after{
 }
 .type , .grade {
     float: left;
-    color: #b38b39;
-    font-size: 0.12rem;
+    color: rgb(255,148,63);
+    font-size: 0.1rem;
     /*height: 0.19rem;*/
     /*line-height: 0.20rem;*/
     vertical-align: middle;
     margin-top: .04rem;
-    background: #fff0de;
+    background: rgb(255,240,222);
     padding: 2px 5px;
     border-radius: 2px;
 }
@@ -72,7 +72,7 @@ ul li:after{
         width: 10px;
         margin-left: 1px;
         height: 10px;
-        background: url('../img/starfill2.png') no-repeat;
+        background: url('../img/stared-2-s.png') no-repeat;
         background-size:100% 100%
     }
 
@@ -81,7 +81,7 @@ ul li:after{
         width: 11px;
         margin-left: 1px;
         height: 10px;
-        background: url('../img/star22.png') no-repeat;
+        background: url('../img/starno-2-s.png') no-repeat;
         background-size:100% 100%
     }
 }
@@ -92,7 +92,7 @@ ul li:after{
         width: 20px;
         margin-left: 1px;
         height: 20px;
-        background: url('../img/starfill2.png') no-repeat ;
+        background: url('../img/stared-2-s.png') no-repeat ;
     }
 
     .grade .bg-active{
@@ -100,7 +100,7 @@ ul li:after{
         width: 22px;
         margin-left: 1px;
         height: 20px;
-        background: url('../img/star22.png') no-repeat;
+        background: url('../img/starno-2-s.png') no-repeat;
     }
 }
 @media screen and (min-width:1000px) {
@@ -109,14 +109,14 @@ ul li:after{
         width: 30px;
         margin-left: 1px;
         height: 30px;
-        background: url('../img/starfill3.png') no-repeat;
+        background: url('../img/stared-2-d.png') no-repeat;
     }
     .grade .bg-active{
         display: inline-block;
         width: 33px;
         margin-left: 1px;
         height: 30px;
-        background: url('../img/star33.png') no-repeat;
+        background: url('../img/starno-2-d.png') no-repeat;
     }
 }
 .cont-title{
