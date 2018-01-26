@@ -44,12 +44,10 @@ ul li:after{
     float: left;
     color: rgb(255,148,63);
     font-size: 0.1rem;
-    /*height: 0.19rem;*/
-    /*line-height: 0.20rem;*/
     vertical-align: middle;
     margin-top: .04rem;
     background: rgb(255,240,222);
-    padding: 2px 5px;
+    padding: 2px 4px;
     border-radius: 2px;
 }
 .grade{
@@ -137,7 +135,7 @@ ul li:after{
     margin-left: 5px;
 }
 section{
-    margin-top:0.3rem;
+    margin-top:0.2rem;
     font-size: 0.16rem;
     color: #333;
 }
@@ -150,7 +148,7 @@ section p {
     line-height: 0.27rem;
 }
 section img{
-    height: 2rem;
+    width: 100%;
     margin: 0.05rem 0;
 }
 .more-fund{
@@ -164,4 +162,12 @@ section img{
 }
 .list-left .zero {
     color: #333333
+}
+.list-right .hideit {
+    display:none
+}
+#sectionId .disclaimer{
+    font-size:0.12rem;
+    color:#999999;
+    text-align:center
 }
