@@ -3,7 +3,9 @@
  */
 var uriT = 'http://10.0.12.26:5599';
 var uriT2 = 'http://10.0.12.25:35119';
-
+$(document).ready(function(){
+    $('.questionPage').height(document.documentElement.clientHeight);
+})
 //需要接收参数
 // papertype:'0'//机构=0，个人=1
 // paperid:'888888',//机构试卷编号=888888个人试卷编号=777777
@@ -43,6 +45,7 @@ function nextQuestion(){
         }
         currentTest++;
     }else {
+        $('.questionPage').scrollTop($('.questionPage')[0].scrollHeight);
         isSecond = false;
     }
 
