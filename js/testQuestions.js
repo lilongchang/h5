@@ -279,7 +279,7 @@ function getRIskmemo(id){
                     $('.fund-list').empty();
                     for(var i = 0; i < result.length; i++){
                         $('.fund-list').append(
-                            "<li><p class='title'>"+result[i].title+"</p><p class='sub-title'>"+result[i].memo+"</p><i></i></li>"
+                            "<li><a href="+result[i].adid+"><p class='title'>"+result[i].title+"</p><p class='sub-title'>"+result[i].memo+"</p><i></i></a></li>"
                         )
                     }
                 }else {
@@ -319,7 +319,7 @@ function getRiskRemark(id) {     // http://10.0.12.26:35117/app/api/riskAppraisa
                    $('.fund-list').empty();
                    for(var i = 0; i < result.length; i++){
                        $('.fund-list').append(
-                           "<li><p class='title'>"+result[i].title+"</p><p class='sub-title'>"+result[i].memo+"</p><i></i></li>"
+                           "<li><a href=''><p class='title'>"+result[i].title+"</p><p class='sub-title'>"+result[i].memo+"</p><i></i></a></li>"
                        )
                    }
                }
@@ -354,7 +354,7 @@ function getRecommendFund(code) {
                 $('.fund-list').empty();
                 for(var i = 0; i < result.length; i++){
                     $('.fund-list').append(
-                        "<li><p class='title'>"+result[i].title+"</p><p class='sub-title'>"+result[i].memo+"</p><i></i></li>"
+                        "<li><a href=''><p class='title'>"+result[i].title+"</p><p class='sub-title'>"+result[i].memo+"</p><i></i></a></li>"
                     )
                 }
             }else{
@@ -369,7 +369,16 @@ function getRecommendFund(code) {
 }
 // 重新评测
 function testAgain() {
-    console.log(123)
-    window.location.reload()
-    // window.location.href = location.href+'?time='+((new Date()).getTime());
+    // console.log(123)
+    // window.location.reload()
+    getQuestionList()
+    $('.nowOrder').html('1')
+    currentTest=1;
+    isSecond = true;
+    $('.questionPage').show()
+    $('.resultTest').hide()
+    $('.preQuestion').hide()
+    $('.submit').hide()
+    // window.location.href = location.href+'?flag=false';
 }
+

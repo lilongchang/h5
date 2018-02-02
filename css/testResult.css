@@ -80,6 +80,10 @@ body {
 .fund-list li:first-child{
     border-top:0.6px solid rgb(238,238,238);
 }
+.fund-list li a {
+    display: inline-block;
+    width: 105%;
+}
 .fund-list li .title {
     font-size: 15px;
     height: 20px;
