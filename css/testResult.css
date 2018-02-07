@@ -19,7 +19,8 @@ body {
     display: inline-block;
     width: 80px;
     height: 81px;
-    background: url('../img/finashed-2.png') no-repeat;
+    background: url('../img/finashed-4.png') no-repeat;
+    background-size: 100% 100%;
 }
 
 .text {
