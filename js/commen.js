@@ -11,7 +11,13 @@ window.onload = function () {
     }
 };
 var uriT1 = 'http://10.0.12.25:9002/api/v1';
-
+// 获取url参数
+function getQueryString(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) return (r[2]);
+    return null;
+}
 // (function() {
 //    var baseFontSize = 100;
 //    var baseWidth = 375;
