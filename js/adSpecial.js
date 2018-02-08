@@ -253,9 +253,12 @@ function getInformation() {
                                 risk = fundList[j].risk
                             }
                             var procodes = fundList[j].prodcode;
-                            $('.fund-container').append(
+                            $('.fund-container').prepend(
                                 "<li data-procode="+procodes+" onclick='goDetails(this)'>" +
-                                "<div class='list-left'><p class='profit "+addStyle+"'>" + yield + "</p><p class='remark'>"+$('.tishi').html()+"</p></div>" +
+                                "<div class='list-left'>" +
+                                "<p class='profit "+addStyle+"'>" + yield + "</p>" +
+                                "<p class='remark'>"+$('.tishi').html()+"</p>" +
+                                "</div>" +
                                 "<div class='lines'><i class='line'></i></div>" +
                                 "<div class='list-right'><h3>" + fundList[j].fundName + "</h3><div class='right-bottom'>" +
                                 showIS(fundList[j].grade, fundList[j].rate, fundList[j].risk, fundList[j].themes, fundList[j].type) +
