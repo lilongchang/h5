@@ -3,7 +3,8 @@
  */
 //获取类型描述和推荐列表
 var riskClass = getQueryString('levelcode');
-if(riskClass){
+
+if(riskClass != undefined){
     if(riskClass == '0'){
         $('.riskType').html('“保守型”')
         $('.bestFund').html('保守型')
@@ -62,6 +63,7 @@ function getRIskmemo(id){
 // 重新评测
 function testAgain() {
 
+    $('#refresh').prop('href','testQuestions.html?lilongchang=666')
     // window.location.href = location.href+'?flag=false';
 }
 // 完成测评
